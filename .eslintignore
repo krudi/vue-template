@@ -1,0 +1,18 @@
+# Vue and Nuxt files
+
+.nuxt
+.output
+dist
+nuxt.d.ts
+
+# Vercel files
+
+.vercel
+
+# Jest files
+
+coverage
+
+# Dependency directories
+
+node_modules

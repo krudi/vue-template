@@ -1,0 +1,34 @@
+extends:
+  - 'plugin:@typescript-eslint/recommended'
+  - "plugin:prettier/recommended"
+  - "plugin:vue/vue3-essential"
+  - "plugin:vue/vue3-recommended"
+  - "plugin:vue/vue3-strongly-recommended"
+  - 'plugin:nuxt/recommended'
+  - '@nuxt/eslint-config'
+
+plugins:
+  - '@typescript-eslint'
+  - 'prettier'
+  - 'cypress'
+  - 'jest'
+
+parser: vue-eslint-parser
+parserOptions:
+  parser: '@typescript-eslint/parser'
+  sourceType: module
+
+rules:
+  quotes:
+    - error
+    - single
+  quote-props:
+    - error
+    - consistent
+  prettier/prettier:
+    - error
+    - singleQuote: true
+  vue/multi-word-component-names:
+    - off
+  import/no-anonymous-default-export:
+    - off
