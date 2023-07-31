@@ -32,3 +32,8 @@ rules:
     - off
   import/no-anonymous-default-export:
     - off
+  "@typescript-eslint/ban-ts-comment":
+    - off
+  "vue/v-bind-style":
+    - error
+    - longform

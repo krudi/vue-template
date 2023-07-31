@@ -1,4 +1,5 @@
 import { defineNuxtConfig } from 'nuxt/config'
+import path from 'path'
 
 export default defineNuxtConfig({
   experimental: {
@@ -205,6 +206,20 @@ export default defineNuxtConfig({
         }
       ]
     }
+  },
+  vite: {
+    resolve: {
+      alias: [
+        {
+          find: '@',
+          replacement: path.resolve(__dirname, './')
+        },
+        {
+          find: '~',
+          replacement: path.resolve(__dirname, './')
+        }
+      ]
+    },
   },
   postcss: {
     plugins: {

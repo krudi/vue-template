@@ -7,7 +7,7 @@
     "cypress/*.d.ts",
     "**/*.vue"
   ],
-  "exclude": ["node_modules", ".nuxt", ".output", "dist"],
+  "exclude": ["node_modules", ".nuxt", ".output", "dist", "tests"],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
