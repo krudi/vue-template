@@ -6,7 +6,7 @@
     "*.d.ts",
     "components/**/*.vue"
   ],
-  "exclude": ["node_modules", "cypress/**/*.ts", ".nuxt", ".output", "dist"],
+  "exclude": ["node_modules", ".nuxt", ".output", "dist"],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {

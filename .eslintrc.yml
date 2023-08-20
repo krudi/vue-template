@@ -10,7 +10,6 @@ extends:
 plugins:
   - '@typescript-eslint'
   - 'prettier'
-  - 'cypress'
   - 'jest'
 
 parser: vue-eslint-parser

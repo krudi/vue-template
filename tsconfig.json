@@ -4,7 +4,6 @@
     "**/*.tsx",
     "*.d.ts",
     ".*.ts",
-    "cypress/*.d.ts",
     "**/*.vue"
   ],
   "exclude": ["node_modules", ".nuxt", ".output", "dist", "tests"],
