@@ -57,7 +57,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@nuxt/cli-edge": "^2.17.2-28179381.14bb6c2",
+    "@nuxt/cli-edge": "^2.17.2-28209622.5444269",
     "@nuxt/typescript-runtime": "^3.0.1",
     "esbuild": "^0.18.17"
   },
