@@ -67,7 +67,7 @@
     "@nuxt/devtools": "^0.8.2",
     "@nuxt/eslint-config": "^0.2.0",
     "@nuxt/types": "^2.17.1",
-    "@nuxtjs/eslint-config-typescript": "^12.0.0",
+    "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@types/jest": "^29.5.4",
     "@types/node": "^20.5.7",
     "@typescript-eslint/eslint-plugin": "^6.4.1",
