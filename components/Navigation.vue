@@ -1,27 +1,18 @@
 <template>
-  <nav class="w-full min-h-[5em] mb-5 flex justify-between items-center">
-    <h1 class="px-4 py-2 bg-sky-800">
-      <NuxtLink
-        to="/"
-        class="text-white font-semibold"
-      >
+  <nav class="navigation">
+    <h1 class="navigation-logo">
+      <NuxtLink to="/" class="navigation-logo-link">
         vue-template
       </NuxtLink>
     </h1>
-    <ul class="m-0 p-0 inline-flex gap-7">
+    <ul class="navigation-list">
       <li>
-        <NuxtLink
-          to="/"
-          class="text-gray-500 hover:text-gray-700"
-        >
+        <NuxtLink to="/">
           Home
         </NuxtLink>
       </li>
       <li>
-        <NuxtLink
-          to="404"
-          class="text-gray-500 hover:text-gray-700"
-        >
+        <NuxtLink to="404">
           Not Found
         </NuxtLink>
       </li>

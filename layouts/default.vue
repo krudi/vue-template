@@ -1,10 +1,10 @@
 <template>
-  <div class="container mx-auto">
+  <div class="container">
     <Navigation />
 
     <Header />
 
-    <main class="my-10 p-5 border-1 border-gray-300">
+    <main class="main">
       <slot />
     </main>
 

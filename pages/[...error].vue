@@ -1,15 +1,15 @@
 <template>
   <section>
-    <h3 class="font-bold">
+    <h3>
       <b>Page:</b> [...error].vue
     </h3>
 
-    <hr class="my-7 border-1 border-gray-300">
+    <hr class="hr">
 
-    <h4 class="font-bold">
-      Error
+    <h4>
+      <b>Error</b>
     </h4>
-    <p class="text-gray-500">
+    <p>
       Oh no, something went wrong... maybe refresh?
     </p>
   </section>
