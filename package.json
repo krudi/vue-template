@@ -96,9 +96,7 @@
     "sass-loader": "^13.3.2",
     "start-server-and-test": "^2.0.0",
     "stylelint": "^15.10.3",
-    "stylelint-config-prettier": "^9.0.5",
     "stylelint-config-standard": "^34.0.0",
-    "stylelint-config-standard-scss": "^11.0.0",
     "ts-jest": "^29.1.1",
     "typescript": "^5.2.2",
     "vue-tsc": "^1.8.8"
