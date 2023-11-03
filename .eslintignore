@@ -9,10 +9,6 @@ nuxt.d.ts
 
 .vercel
 
-# Jest files
-
-coverage
-
 # Dependency directories
 
 node_modules
