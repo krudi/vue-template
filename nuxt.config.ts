@@ -2,9 +2,6 @@ import { defineNuxtConfig } from 'nuxt/config'
 import path from 'path'
 
 export default defineNuxtConfig({
-  experimental: {
-    reactivityTransform: false
-  },
   devtools: {
     enabled: true
   },
