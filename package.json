@@ -55,16 +55,16 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@nuxt/cli-edge": "^2.17.2-28212498.5444269",
-    "@nuxt/typescript-runtime": "^3.0.1",
-    "esbuild": "^0.19.2"
+    "@nuxt/cli-edge": "^2.17.2-28284499.5674f49",
+    "@nuxt/typescript-runtime": "^3.0.2",
+    "esbuild": "^0.20.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
-    "@nuxt/devtools": "^0.8.2",
+    "@nuxt/devtools": "^1.0.8",
     "@nuxt/eslint-config": "^0.2.0",
-    "@nuxt/types": "^2.17.1",
+    "@nuxt/types": "^2.17.3",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@types/node": "^20.5.9",
     "@typescript-eslint/eslint-plugin": "^6.5.0",
