@@ -84,7 +84,7 @@
     "postcss-load-config": "^5.0.2",
     "postcss-nested": "^6.0.1",
     "postcss-scss": "^4.0.9",
-    "prettier": "^3.2.4",
+    "prettier": "^3.2.5",
     "sass": "^1.70.0",
     "sass-loader": "^14.1.0",
     "start-server-and-test": "^2.0.3",
