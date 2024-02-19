@@ -57,7 +57,7 @@
   "dependencies": {
     "@nuxt/cli-edge": "^2.17.2-28284499.5674f49",
     "@nuxt/typescript-runtime": "^3.0.2",
-    "esbuild": "^0.20.0"
+    "esbuild": "^0.20.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^18.6.0",
@@ -78,7 +78,7 @@
     "eslint-plugin-vue": "^9.21.1",
     "husky": "^9.0.10",
     "lint-staged": "^15.2.1",
-    "nuxt": "^3.10.1",
+    "nuxt": "^3.10.2",
     "postcss": "^8.4.33",
     "postcss-import": "^16.0.0",
     "postcss-load-config": "^5.0.2",
