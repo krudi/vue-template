@@ -16,7 +16,7 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/devtools'
   ],
-  css: ['~/assets/styles/styles.scss'],
+  css: ['~/assets/styles/styles.css'],
   app: {
     head: {
       title: 'vue-boilerplate',
@@ -223,7 +223,6 @@ export default defineNuxtConfig({
       'postcss-import': {},
       'postcss-nested': {},
       'autoprefixer': {},
-      ...(process.env.NODE_ENV === 'production' ? { cssnano: {} } : {})
     },
   },
 })

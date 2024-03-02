@@ -29,10 +29,7 @@ updates:
           - "@typescript-eslint/*"
       StyleSheet:
         patterns:
-          - sass
-          - sass-loader
           - postcss
-          - cssnano
           - autoprefixer
       Commit:
           patterns:
