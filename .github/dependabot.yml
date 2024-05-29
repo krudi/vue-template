@@ -14,7 +14,6 @@ updates:
           - "nuxt"
           - "@nuxt/*"
           - esbuild
-          - start-server-and-test
       TypeScript:
         patterns:
           - typescript
