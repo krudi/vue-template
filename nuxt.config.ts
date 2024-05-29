@@ -20,6 +20,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: 'vue-boilerplate',
+      charset: 'utf-8',
       meta: [
         {
           name: 'viewport',
@@ -222,6 +223,7 @@ export default defineNuxtConfig({
     plugins: {
       'postcss-import': {},
       'postcss-nested': {},
+      'postcss-custom-media': {},
       'autoprefixer': {},
     },
   },
