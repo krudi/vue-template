@@ -1,5 +1,5 @@
 import { defineNuxtConfig } from 'nuxt/config'
-import path from 'path'
+import { resolve } from 'path'
 
 export default defineNuxtConfig({
   devtools: {
@@ -210,11 +210,11 @@ export default defineNuxtConfig({
       alias: [
         {
           find: '@',
-          replacement: path.resolve(__dirname, './')
+          replacement: resolve(__dirname, './')
         },
         {
           find: '~',
-          replacement: path.resolve(__dirname, './')
+          replacement: resolve(__dirname, './')
         }
       ]
     },
