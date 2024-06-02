@@ -13,7 +13,6 @@ updates:
         patterns:
           - "nuxt"
           - "@nuxt/*"
-          - esbuild
       TypeScript:
         patterns:
           - typescript
