@@ -4,37 +4,3 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
-    reviewers:
-      - "krudi"
-    assignees:
-      - "krudi"
-    groups:
-      React:
-        patterns:
-          - "nuxt"
-          - "@nuxt/*"
-      TypeScript:
-        patterns:
-          - typescript
-          - ts-node
-          - pro-types
-          - "@types/*"
-          - "@nuxtjs/*"
-          - "vue-tsc"
-      ESLint:
-        patterns:
-          - eslint
-          - "@typescript-eslint/*"
-      StyleSheet:
-        patterns:
-          - postcss
-          - autoprefixer
-      Commit:
-          patterns:
-            - husky
-            - lint-staged
-            - "@commitlint/*"
-      Lint:
-        patterns:
-          - stylelint
-          - prettier
