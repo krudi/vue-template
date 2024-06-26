@@ -195,13 +195,9 @@ export default defineNuxtConfig({
         resolve: {
             alias: [
                 {
-                    find: '@',
-                    replacement: resolve(__dirname, './')
-                },
-                {
                     find: '~',
-                    replacement: resolve(__dirname, './')
-                }
+                    replacement: resolve(__dirname)
+                },
             ]
         },
     },
