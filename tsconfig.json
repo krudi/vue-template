@@ -1,20 +1,12 @@
 {
     "extends": "./.nuxt/tsconfig.json",
     "compilerOptions": {
-        "types": [
-            "./.nuxt/pwa-icons/pwa-icons.d.ts",
-            "./.nuxt/pwa-icons/PwaAppleImage.d.ts",
-            "./.nuxt/pwa-icons/PwaAppleSplashScreenImage.d.ts",
-            "./.nuxt/pwa-icons/PwaFaviconImage.d.ts",
-            "./.nuxt/pwa-icons/PwaMaskableImage.d.ts",
-            "./.nuxt/pwa-icons/PwaTransparentImage.d.ts",
-        ],
         "paths": {
-            "@/*": [
-                "./*"
-            ],
             "~/*": [
                 "./*"
+            ],
+            "~/assets/*": [
+                "./assets*"
             ]
         },
     }
