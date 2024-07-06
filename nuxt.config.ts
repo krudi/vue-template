@@ -21,8 +21,8 @@ export default defineNuxtConfig({
                     content: 'vue-template'
                 },
                 {
-                    name: 'generator',
-                    content: 'Nuxt3'
+                    name: 'description',
+                    content: 'A template with Nuxt3 built on Vue3 with focus on performance and best practices.'
                 },
                 {
                     name: 'keywords',
@@ -34,19 +34,7 @@ export default defineNuxtConfig({
                 },
                 {
                     name: 'color-scheme',
-                    content: 'light'
-                },
-                {
-                    name: 'creator',
-                    content: 'Creator'
-                },
-                {
-                    name: 'publisher',
-                    content: 'Publisher'
-                },
-                {
-                    name: 'format-detection',
-                    content: 'telephone: no, address: no, email: no'
+                    content: 'dark light'
                 },
                 {
                     name: 'theme-color',
@@ -57,10 +45,6 @@ export default defineNuxtConfig({
                     name: 'theme-color',
                     media: '(prefers-color-scheme: dark)',
                     content: 'black'
-                },
-                {
-                    name: 'author',
-                    content: 'Author'
                 },
                 {
                     property: 'og:title',
@@ -104,8 +88,8 @@ export default defineNuxtConfig({
                     content: 'website'
                 },
                 {
-                    name: 'twitter:site:id',
-                    content: '1467726470533754880'
+                    name: 'twitter:site',
+                    content: '@twitter'
                 },
                 {
                     name: 'twitter:creator',
@@ -133,20 +117,12 @@ export default defineNuxtConfig({
                     content: 'https://example.com/meta-tags/page-view.webp'
                 },
                 {
-                    property: 'twitter:image:width',
-                    content: '1800'
-                },
-                {
-                    property: 'twitter:image:height',
-                    content: '1600'
-                },
-                {
                     name: 'twitter:image:alt',
                     content: 'Alternative description'
                 },
                 {
                     name: 'robots',
-                    content: 'noindex, follow, nocache'
+                    content: 'index,follow'
                 },
                 {
                     name: 'googlebot',
@@ -155,24 +131,6 @@ export default defineNuxtConfig({
                 }
             ],
             link: [
-                {
-                    rel: 'canonical',
-                    href: 'http://127.0.0.1:3000'
-                },
-                {
-                    rel: 'alternate',
-                    hreflang: 'en-US',
-                    href: 'http://127.0.0.1:3000'
-                },
-                {
-                    rel: 'alternate',
-                    media: 'only screen and (max-width: 600px)',
-                    href: 'https://example.com/meta-tags/page-view.webp'
-                },
-                {
-                    rel: 'author',
-                    href: 'https://example.com'
-                },
                 {
                     rel: 'shortcut icon',
                     href: '/favicons/nuxt3-favicon.svg',
