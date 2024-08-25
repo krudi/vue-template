@@ -8,7 +8,11 @@ export default defineNuxtConfig({
     imports: {
         autoImport: true,
     },
-    modules: ['@nuxt/devtools', '@vite-pwa/nuxt'],
+    modules: [
+        '@nuxt/eslint',
+        '@nuxt/devtools',
+        '@vite-pwa/nuxt'
+    ],
     css: ['~/assets/styles/styles.css'],
     app: {
         head: {
@@ -158,6 +162,9 @@ export default defineNuxtConfig({
                 },
             ]
         },
+    },
+    eslint: {
+        checker: true
     },
     pwa: {
         registerType: 'autoUpdate',
