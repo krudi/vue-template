@@ -1,13 +1,13 @@
 <template>
-  <div class="container">
-    <Navigation />
+    <div class="container">
+        <PageNavigation />
 
-    <Header />
+        <Header />
 
-    <main class="main">
-      <slot />
-    </main>
+        <main class="main">
+            <slot />
+        </main>
 
-    <Footer />
-  </div>
+        <PageFooter />
+    </div>
 </template>
