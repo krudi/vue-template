@@ -1,9 +1,43 @@
-import globals from 'globals';
 import eslint from '@eslint/js';
-import tseslint from 'typescript-eslint';
 import prettierConfig from 'eslint-config-prettier';
+import importSortPlugin from 'eslint-plugin-simple-import-sort';
 import vuePlugin from 'eslint-plugin-vue';
+import globals from 'globals';
+import tseslint from 'typescript-eslint';
+
 import withNuxt from './.nuxt/eslint.config.mjs'
+
+const typeScriptConfig = [
+    ...tseslint.configs.recommended,
+    {
+        languageOptions: {
+            parser: tseslint.parser
+        },
+    },
+    {
+        files: ['**/*.{js,cjs,mjs}'],
+        ...tseslint.configs.disableTypeChecked,
+    },
+];
+
+const importSortConfig = {
+    plugins: {
+        'simple-import-sort': importSortPlugin,
+    },
+    rules: {
+        'simple-import-sort/imports': 'error',
+        'simple-import-sort/exports': 'error',
+    },
+};
+
+const vueConfig = [
+    ...vuePlugin.configs['flat/recommended'],
+    {
+        rules: {
+            'vue/multi-word-component-names': 'off'
+        }
+    }
+];
 
 export default withNuxt(
     {
@@ -16,10 +50,6 @@ export default withNuxt(
             '.output'
         ],
     },
-    eslint.configs.recommended,
-    ...tseslint.configs.recommended,
-    ...vuePlugin.configs['flat/recommended'],
-    prettierConfig,
     {
         languageOptions: {
             globals: {
@@ -28,17 +58,23 @@ export default withNuxt(
         }
     },
     {
-        files: ['**/*.{js,cjs,mjs,ts,mts,vue}'],
+        files: ['**/*.{js,jsx,cjs,mjs,ts,tsx,mts,vue}'],
         rules: {
-            "indent": ["warn", 4],
-            "no-undef": "off",
-            "perfectionist/sort-vue-attributes": "off",
-            "tailwindcss/no-custom-classname": "off",
-            "vue/html-indent": ["warn", 4],
-            "vue/multi-word-component-names": "off",
-            "vue/v-on-event-hyphenation": "off",
-            "@typescript-eslint/no-invalid-void-type": "off",
-            "@typescript-eslint/unified-signatures": "off"
+            'quotes': [
+                'error',
+                'single'
+            ],
+            'quote-props': [
+                'error',
+                'consistent'
+            ],
+            'import/prefer-default-export': 'off',
+            'import/no-anonymous-default-export': 'off'
         }
-    }
-)
+    },
+    eslint.configs.recommended,
+    ...typeScriptConfig,
+    ...vueConfig,
+    prettierConfig,
+    importSortConfig
+);
