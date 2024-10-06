@@ -14,7 +14,7 @@ export default defineNuxtConfig({
         head: {
             title: 'vue-boilerplate',
             charset: 'utf-8',
-            viewport: 'width=device-width, initial-scale=1',
+            viewport: 'width=device-width, initial-scale=1, maximum-scale=3',
             meta: [
                 {
                     name: 'application-name',
