@@ -253,7 +253,6 @@ export default defineNuxtConfig({
         plugins: {
             'postcss-import': {},
             'postcss-nested': {},
-            'postcss-custom-media': {},
             'autoprefixer': {},
         },
     },

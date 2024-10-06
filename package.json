@@ -61,7 +61,6 @@
         "eslint-plugin-vue": "^9.27.0",
         "nuxt": "^3.13.0",
         "postcss": "^8.4.41",
-        "postcss-custom-media": "^11.0.1",
         "postcss-import": "^16.1.0",
         "postcss-load-config": "^6.0.1",
         "postcss-nested": "^6.2.0",
