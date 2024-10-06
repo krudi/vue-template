@@ -8,6 +8,9 @@ export default defineNuxtConfig({
     imports: {
         autoImport: true
     },
+    typescript: {
+        typeCheck: true
+    },
     modules: ['@nuxt/eslint', '@nuxt/devtools', '@vite-pwa/nuxt'],
     css: ['~/assets/styles/styles.css'],
     app: {

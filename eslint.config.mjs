@@ -5,8 +5,6 @@ import vuePlugin from 'eslint-plugin-vue';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
-import withNuxt from './.nuxt/eslint.config.mjs'
-
 const typeScriptConfig = [
     ...tseslint.configs.recommended,
     {
@@ -39,7 +37,7 @@ const vueConfig = [
     }
 ];
 
-export default withNuxt(
+export default tseslint.config(
     {
         ignores: [
             'dist',
