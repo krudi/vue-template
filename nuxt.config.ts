@@ -1,18 +1,14 @@
-import { defineNuxtConfig } from 'nuxt/config'
-import { resolve } from 'path'
+import { defineNuxtConfig } from 'nuxt/config';
+import { resolve } from 'path';
 
 export default defineNuxtConfig({
     devtools: {
         enabled: true
     },
     imports: {
-        autoImport: true,
+        autoImport: true
     },
-    modules: [
-        '@nuxt/eslint',
-        '@nuxt/devtools',
-        '@vite-pwa/nuxt'
-    ],
+    modules: ['@nuxt/eslint', '@nuxt/devtools', '@vite-pwa/nuxt'],
     css: ['~/assets/styles/styles.css'],
     app: {
         head: {
@@ -26,7 +22,8 @@ export default defineNuxtConfig({
                 },
                 {
                     name: 'description',
-                    content: 'A template with Nuxt3 built on Vue3 with focus on performance and best practices.'
+                    content:
+                        'A template with Nuxt3 built on Vue3 with focus on performance and best practices.'
                 },
                 {
                     name: 'keywords',
@@ -159,9 +156,9 @@ export default defineNuxtConfig({
                 {
                     find: '~',
                     replacement: resolve(__dirname)
-                },
+                }
             ]
-        },
+        }
     },
     eslint: {
         checker: true
@@ -173,7 +170,7 @@ export default defineNuxtConfig({
             suppressWarnings: true,
             navigateFallback: '/',
             navigateFallbackAllowlist: [/^\/$/],
-            type: 'module',
+            type: 'module'
         },
         manifest: {
             name: 'nuxt3-template',
@@ -243,17 +240,17 @@ export default defineNuxtConfig({
             ]
         },
         workbox: {
-            globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
+            globPatterns: ['**/*.{js,css,html,png,svg,ico}']
         },
         injectManifest: {
-            globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
-        },
+            globPatterns: ['**/*.{js,css,html,png,svg,ico}']
+        }
     },
     postcss: {
         plugins: {
             'postcss-import': {},
             'postcss-nested': {},
-            'autoprefixer': {},
-        },
-    },
-})
+            autoprefixer: {}
+        }
+    }
+});
