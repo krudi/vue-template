@@ -2,11 +2,9 @@ import { defineNuxtConfig } from 'nuxt/config';
 import { resolve } from 'path';
 
 export default defineNuxtConfig({
+    compatibilityDate: '2024-10-06',
     devtools: {
         enabled: true
-    },
-    imports: {
-        autoImport: true
     },
     modules: ['@nuxt/eslint', '@nuxt/devtools', '@vite-pwa/nuxt'],
     css: ['~/assets/styles/styles.css'],
