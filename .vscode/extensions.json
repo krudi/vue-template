@@ -3,6 +3,8 @@
         "esbenp.prettier-vscode",
         "dbaeumer.vscode-eslint",
         "stylelint.vscode-stylelint",
-        "editorconfig.editorconfig"
+        "editorconfig.editorconfig",
+        "nuxtr.nuxtr-vscode",
+        "vue.volar"
     ]
 }
