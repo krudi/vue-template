@@ -1,7 +1,7 @@
 <template>
     <div>
         <NuxtLoadingIndicator />
-        <VitePwaManifest />
+
         <NuxtLayout>
             <NuxtPage />
         </NuxtLayout>
@@ -82,6 +82,10 @@ useHead({
             rel: 'apple-touch-icon',
             sizes: '180x180',
             href: '/favicons/nuxt3-apple-touch.svg'
+        },
+        {
+            rel: 'manifest',
+            href: '/manifest.json'
         }
     ]
 });
