@@ -11,7 +11,6 @@ updates:
       - 'github'
     commit-message:
       prefix: 'build(deps)'
-
   - package-ecosystem: 'npm'
     directory: '/'
     reviewers:
