@@ -47,7 +47,7 @@
         "lint:full:fix": "npm run lint:js:fix && npm run lint:css:fix && npm run lint:files:fix"
     },
     "devDependencies": {
-        "@nuxt/devtools": "^1.6.4",
+        "@nuxt/devtools": "^1.7.0",
         "@nuxt/eslint": "^0.7.4",
         "@nuxt/eslint-config": "^0.7.4",
         "@nuxt/types": "^2.18.1",
