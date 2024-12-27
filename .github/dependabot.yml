@@ -8,7 +8,6 @@ updates:
       interval: 'daily'
     labels:
       - 'dependencies'
-      - 'github'
     commit-message:
       prefix: 'build(deps)'
   - package-ecosystem: 'npm'
@@ -19,7 +18,6 @@ updates:
       interval: 'daily'
     labels:
       - 'dependencies'
-      - 'npm'
     commit-message:
       prefix: 'build(deps)'
     ignore:
