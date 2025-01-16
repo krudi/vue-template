@@ -51,7 +51,7 @@
         "@nuxt/eslint": "^0.7.5",
         "@nuxt/eslint-config": "^0.7.4",
         "@nuxt/types": "^2.18.1",
-        "@types/node": "^22.10.6",
+        "@types/node": "^22.10.7",
         "autoprefixer": "^10.4.20",
         "eslint": "^9.18.0",
         "eslint-config-prettier": "^9.1.0",
