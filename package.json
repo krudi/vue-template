@@ -62,7 +62,7 @@
         "postcss-import": "^16.1.0",
         "postcss-load-config": "^6.0.1",
         "postcss-nested": "^7.0.2",
-        "prettier": "^3.5.2",
+        "prettier": "^3.5.3",
         "stylelint": "^16.14.1",
         "stylelint-config-standard": "^36.0.1",
         "ts-node": "^10.9.2",
