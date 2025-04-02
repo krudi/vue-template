@@ -10,6 +10,7 @@ updates:
           - 'dependencies'
       commit-message:
           prefix: 'build(deps)'
+
     - package-ecosystem: 'npm'
       directory: '/'
       reviewers:
@@ -27,37 +28,52 @@ updates:
       groups:
           framework:
               patterns:
-                  - '^nuxt$'
-                  - '^vue$'
-                  - '^vue-tsc$'
+                  - 'nuxt'
+                  - 'vue-tsc'
               update-types:
                   - 'minor'
+
           linting-and-formatting:
               patterns:
-                  - 'eslint*'
-                  - 'stylelint*'
+                  - 'eslint'
+                  - 'eslint-config-prettier'
+                  - 'eslint-plugin-simple-import-sort'
+                  - 'eslint-plugin-vue'
                   - 'prettier'
+                  - 'stylelint'
+                  - 'stylelint-config-standard'
               update-types:
                   - 'minor'
+
           typings:
               patterns:
-                  - '@types/*'
+                  - '@types/node'
               update-types:
                   - 'minor'
+
           build-tools:
               patterns:
-                  - 'typescript*'
-                  - 'ts-node*'
+                  - 'typescript'
+                  - 'ts-node'
+                  - 'typescript-eslint'
               update-types:
                   - 'minor'
+
           postcss:
               patterns:
-                  - 'postcss*'
+                  - 'postcss'
+                  - 'postcss-import'
+                  - 'postcss-load-config'
+                  - 'postcss-nested'
                   - 'autoprefixer'
               update-types:
                   - 'minor'
+
           nuxt-ecosystem:
               patterns:
-                  - '@nuxt/*'
+                  - '@nuxt/devtools'
+                  - '@nuxt/eslint'
+                  - '@nuxt/eslint-config'
+                  - '@nuxt/types'
               update-types:
                   - 'minor'
