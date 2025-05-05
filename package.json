@@ -57,7 +57,7 @@
         "eslint-config-prettier": "^10.1.2",
         "eslint-plugin-simple-import-sort": "^12.1.1",
         "eslint-plugin-vue": "^10.1.0",
-        "nuxt": "^3.17.1",
+        "nuxt": "^3.17.2",
         "postcss": "^8.5.3",
         "postcss-import": "^16.1.0",
         "postcss-load-config": "^6.0.1",
