@@ -28,7 +28,7 @@
         "url": "https://github.com/krudi/vue-template.git"
     },
     "engines": {
-        "node": ">= 22.14.0",
+        "node": ">= 23.11.0",
         "npm": ">= 10.8.1"
     },
     "scripts": {
@@ -37,10 +37,10 @@
         "generate": "nuxt generate",
         "preview": "nuxt preview",
         "start": "node .output/server/index.mjs",
-        "lint:js": "eslint -c ./eslint.config.mjs",
-        "lint:js:fix": "eslint -c ./eslint.config.mjs --fix",
-        "lint:css": "stylelint --c ./stylelint.config.mjs **/*.css",
-        "lint:css:fix": "stylelint -c ./stylelint.config.mjs --fix **/*.css",
+        "lint:js": "eslint -c ./eslint.config.ts",
+        "lint:js:fix": "eslint -c ./eslint.config.ts --fix",
+        "lint:css": "stylelint --c ./stylelint.config.ts **/*.css",
+        "lint:css:fix": "stylelint -c ./stylelint.config.ts --fix **/*.css",
         "lint:files": "prettier --check \"**/*.{js,ts,vue,css,html,xml,yaml,yml,json,json5,graphql,gql}\"",
         "lint:files:fix": "prettier --write \"**/*.{js,ts,vue,css,html,xml,yaml,yml,json,json5,graphql,gql}\"",
         "lint:full": "npm run lint:js && npm run lint:css && npm run lint:files",

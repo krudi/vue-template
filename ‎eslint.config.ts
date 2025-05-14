@@ -4,16 +4,6 @@ import importSortPlugin from 'eslint-plugin-simple-import-sort';
 import vuePlugin from 'eslint-plugin-vue';
 import globals from 'globals';
 
-const importSortConfig = {
-    plugins: {
-        'simple-import-sort': importSortPlugin,
-    },
-    rules: {
-        'simple-import-sort/imports': 'error',
-        'simple-import-sort/exports': 'error',
-    },
-};
-
 const vueConfig = [
     ...vuePlugin.configs['flat/recommended'],
     {
@@ -43,7 +33,12 @@ export default createConfigForNuxt(
     },
     {
         files: ['**/*.{js,jsx,cjs,mjs,ts,tsx,mts,vue}'],
+        plugins: {
+            'simple-import-sort': importSortPlugin,
+        },
         rules: {
+            'simple-import-sort/imports': 'error',
+            'simple-import-sort/exports': 'error',
             'quotes': [
                 'error',
                 'single'
@@ -57,6 +52,5 @@ export default createConfigForNuxt(
         }
     },
     ...vueConfig,
-    prettierConfig,
-    importSortConfig
+    prettierConfig
 );

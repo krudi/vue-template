@@ -1,5 +1,6 @@
-/** @type {import('stylelint').Config} */
-export default {
+import type { Config } from 'stylelint';
+
+const config: Config = {
     'extends': 'stylelint-config-standard',
     'overrides': [
         {
@@ -76,3 +77,5 @@ export default {
         'no-invalid-position-at-import-rule': null,
     }
 }
+
+export default config;
