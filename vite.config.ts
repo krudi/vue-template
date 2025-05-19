@@ -1,7 +1,7 @@
 import { resolve } from 'path';
-import type { UserConfig } from 'vite'
+import type { UserConfig } from 'vite';
 
-export default defineConfig({
+export default {
     resolve: {
         alias: [
             {
@@ -10,4 +10,4 @@ export default defineConfig({
             }
         ]
     }
-});
+} satisfies UserConfig;
