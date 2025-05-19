@@ -1,4 +1,4 @@
-import { createConfigForNuxt } from '@nuxt/eslint-config/flat'
+import { createConfigForNuxt } from '@nuxt/eslint-config/flat';
 import prettierConfig from 'eslint-config-prettier';
 import importSortPlugin from 'eslint-plugin-simple-import-sort';
 import vuePlugin from 'eslint-plugin-vue';
@@ -22,7 +22,7 @@ export default createConfigForNuxt(
             'node_modules',
             '.nuxt',
             '.output'
-        ],
+        ]
     },
     {
         languageOptions: {
@@ -34,19 +34,13 @@ export default createConfigForNuxt(
     {
         files: ['**/*.{js,jsx,cjs,mjs,ts,tsx,mts,vue}'],
         plugins: {
-            'simple-import-sort': importSortPlugin,
+            'simple-import-sort': importSortPlugin
         },
         rules: {
             'simple-import-sort/imports': 'error',
             'simple-import-sort/exports': 'error',
-            'quotes': [
-                'error',
-                'single'
-            ],
-            'quote-props': [
-                'error',
-                'consistent'
-            ],
+            quotes: ['error', 'single'],
+            'quote-props': ['error', 'consistent'],
             'import/prefer-default-export': 'off',
             'import/no-anonymous-default-export': 'off'
         }
