@@ -54,7 +54,7 @@
         "@nuxt/types": "^2.18.1",
         "@types/node": "^22.15.18",
         "autoprefixer": "^10.4.21",
-        "eslint": "^9.26.0",
+        "eslint": "^9.27.0",
         "eslint-config-prettier": "^10.1.5",
         "eslint-plugin-simple-import-sort": "^12.1.1",
         "eslint-plugin-vue": "^10.1.0",
