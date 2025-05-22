@@ -60,7 +60,7 @@
         "eslint-plugin-vue": "^10.1.0",
         "install": "^0.13.0",
         "jiti": "^2.4.2",
-        "npm": "^11.4.0",
+        "npm": "^11.4.1",
         "nuxt": "^3.17.4",
         "postcss": "^8.5.3",
         "postcss-import": "^16.1.0",
