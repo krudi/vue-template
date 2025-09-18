@@ -5,10 +5,6 @@
 dist
 nuxt.d.ts
 
-# Vercel files
-
-.vercel
-
 # Environment variables
 
 *.env
@@ -21,6 +17,7 @@ node_modules
 # ESLint files
 
 .eslintcache
+.eslint-config-inspector
 
 # TypeScript files
 
