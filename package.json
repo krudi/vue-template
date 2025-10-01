@@ -54,7 +54,7 @@
         "stylelint": "^16.24.0",
         "stylelint-config-standard": "^39.0.0",
         "ts-node": "^10.9.2",
-        "typescript": "^5.9.2",
+        "typescript": "^5.9.3",
         "vue-tsc": "^3.0.8"
     }
 }
