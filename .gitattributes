@@ -1,0 +1,70 @@
+* text=auto eol=lf
+
+# Nuxt / Vue
+*.vue           text eol=lf
+*.ts            text eol=lf
+*.tsx           text eol=lf
+*.js            text eol=lf
+*.jsx           text eol=lf
+*.mjs           text eol=lf
+*.cjs           text eol=lf
+*.d.ts          text eol=lf
+
+# Configuration & data
+*.json          text eol=lf diff=json
+*.json5         text eol=lf diff=json
+*.jsonc         text eol=lf diff=json
+*.yaml          text eol=lf diff=yaml
+*.yml           text eol=lf diff=yaml
+*.toml          text eol=lf
+*.ini           text eol=lf
+*.env           text eol=lf
+*.env.*         text eol=lf
+*.dotenv        text eol=lf
+*.lock          text eol=lf
+nuxt.config.*   text eol=lf
+tsconfig*.json  text eol=lf diff=json
+
+# Styles & markup
+*.css           text eol=lf diff=css
+*.scss          text eol=lf
+*.sass          text eol=lf
+*.less          text eol=lf
+*.pcss          text eol=lf
+*.md            text eol=lf diff=markdown
+*.mdx           text eol=lf diff=markdown
+*.html          text eol=lf diff=html
+*.svg           text eol=lf
+
+# Binary assets
+*.png           binary
+*.jpg           binary
+*.jpeg          binary
+*.gif           binary
+*.webp          binary
+*.avif          binary
+*.ico           binary
+*.mp4           binary
+*.mp3           binary
+*.wav           binary
+*.ogg           binary
+*.ttf           binary
+*.otf           binary
+*.woff          binary
+*.woff2         binary
+
+# Export rules
+/.github/        export-ignore
+/.vscode/        export-ignore
+.env             export-ignore
+.env.*           export-ignore
+.nuxt/           export-ignore
+.output/         export-ignore
+.nitro/          export-ignore
+.cache/          export-ignore
+node_modules/    export-ignore
+dist/            export-ignore
+coverage/        export-ignore
+reports/         export-ignore
+*.log            export-ignore
+*.tmp            export-ignore
