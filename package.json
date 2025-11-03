@@ -40,7 +40,7 @@
     },
     "devDependencies": {
         "@krudi/prettier-config": "^0.1.6",
-        "@krudi/typescript-config": "^0.1.7",
+        "@krudi/typescript-config": "^0.1.9",
         "@nuxt/devtools": "^3.0.1",
         "@nuxt/eslint": "^1.10.0",
         "@nuxt/types": "^2.18.1",
