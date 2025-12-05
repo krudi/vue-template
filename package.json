@@ -40,7 +40,7 @@
         "lint:stylelint:fix": "stylelint -c ./stylelint.config.mjs --fix **/*.css"
     },
     "devDependencies": {
-        "@krudi/prettier-config": "^0.1.6",
+        "@krudi/prettier-config": "^0.1.8",
         "@krudi/typescript-config": "^0.1.9",
         "@nuxt/devtools": "^3.1.1",
         "@nuxt/eslint": "^1.11.0",
