@@ -1,46 +1,44 @@
 {
     "$schema": "https://json.schemastore.org/package.json",
     "name": "vue-template",
-    "description": "A template with Nuxt3 built on Vue3 with focus on performance and best practices.",
     "version": "0.1.0",
+    "private": false,
+    "description": "A template with Nuxt3 built on Vue3 with focus on performance and best practices.",
+    "keywords": [
+        "template"
+    ],
+    "homepage": "https://github.com/krudi/vue-template#readme",
+    "bugs": {
+        "url": "https://github.com/krudi/vue-template/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/krudi/vue-template.git"
+    },
     "license": "MIT",
     "author": {
         "name": "krudi",
         "email": "patryk.kudlik@gmail.com",
         "url": "https://github.com/krudi"
     },
-    "private": false,
-    "homepage": "https://github.com/krudi/vue-template#readme",
-    "bugs": {
-        "url": "https://github.com/krudi/vue-template/issues"
-    },
-    "keywords": [
-        "template"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/krudi/vue-template.git"
-    },
-    "engines": {
-        "node": ">= 22.18.0",
-        "npm": ">= 11.6.2"
-    },
-    "packageManager": "npm@11.6.2",
     "type": "module",
     "scripts": {
-        "dev": "nuxt dev",
         "build": "nuxt build",
+        "dev": "nuxt dev",
         "generate": "nuxt generate",
-        "preview": "nuxt preview",
-        "start": "node .output/server/index.mjs",
-        "typecheck": "tsc -p tsconfig.json --noEmit",
         "lint:eslint": "eslint . --cache --cache-location .cache/.eslintcache",
         "lint:eslint:fix": "eslint . --fix --cache --cache-location .cache/.eslintcache",
-        "lint:stylelint": "stylelint --c ./stylelint.config.mjs **/*.css",
-        "lint:stylelint:fix": "stylelint -c ./stylelint.config.mjs --fix **/*.css"
+        "lint:prettier": "prettier --check . --cache --cache-strategy metadata --cache-location .cache/.prettiercache",
+        "lint:prettier:fix": "prettier --write . --cache --cache-strategy metadata --cache-location .cache/.prettiercache",
+        "lint:stylelint": "stylelint --cache --cache-location .cache/.stylelintcache --c ./stylelint.config.mjs */.css",
+        "lint:stylelint:fix": "stylelint --cache --cache-location .cache/.stylelintcache -c ./stylelint.config.mjs --fix **/*.css",
+        "preview": "nuxt preview",
+        "start": "node .output/server/index.mjs",
+        "typecheck": "tsc -p tsconfig.json --noEmit"
     },
     "devDependencies": {
         "@krudi/prettier-config": "^0.1.6",
+        "@krudi/stylelint-config": "^0.1.1",
         "@krudi/typescript-config": "^0.1.9",
         "@nuxt/devtools": "^3.1.1",
         "@nuxt/eslint": "^1.11.0",
@@ -53,12 +51,13 @@
         "postcss-import": "^16.1.1",
         "postcss-load-config": "^6.0.1",
         "postcss-nested": "^7.0.2",
-        "prettier": "^3.7.4",
-        "stylelint": "^16.26.1",
-        "stylelint-config-standard": "^39.0.1",
-        "stylelint-order": "^7.0.0",
         "ts-node": "^10.9.2",
         "typescript": "^5.9.3",
         "vue-tsc": "^3.1.5"
+    },
+    "packageManager": "npm@11.6.2",
+    "engines": {
+        "node": ">= 22.18.0",
+        "npm": ">= 11.6.2"
     }
 }
