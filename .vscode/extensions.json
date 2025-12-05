@@ -4,6 +4,8 @@
         "dbaeumer.vscode-eslint",
         "stylelint.vscode-stylelint",
         "editorconfig.editorconfig",
+        "redhat.vscode-xml",
+        "redhat.vscode-yaml",
         "nuxtr.nuxtr-vscode",
         "vue.volar"
     ]
