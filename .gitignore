@@ -1,18 +1,18 @@
-# Environment
+# Environment files
 *.env
 !.env-*
 
-# Dependencies
+# Dependencies files
 node_modules
 
-# Build output
+# Build output files
 build
 dist
 .nuxt
 .output
 nuxt.d.ts
 
-# Tooling caches
+# Tooling caches files
 .cache/
 .cache/.eslintcache
 .eslint-config-inspector
@@ -23,7 +23,7 @@ nuxt.d.ts
 .AppleDouble
 .LSOverride
 
-# Compiled artifacts
+# Compiled artifacts files
 *.com
 *.class
 *.dll
@@ -31,7 +31,7 @@ nuxt.d.ts
 *.o
 *.so
 
-# Secrets
+# Secrets files
 *.der
 *.key
 *.pem

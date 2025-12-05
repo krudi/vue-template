@@ -1,25 +1,18 @@
-# Markdown
-*.md
-
-# Dependencies
+# Dependencies files
 node_modules
 
-# Build output
+# Build output files
 build
 dist
 dev-dist
 coverage
 public
 
-# Environment
+# Environment files
 **/.env
 **/.env.*
 
-# Config
-**/.vscode
-**/.idea
-
-# Git
+# Git files
 **/.gitignore
 **/.gitkeep
 
