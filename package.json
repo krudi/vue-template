@@ -37,7 +37,7 @@
         "typecheck": "tsc -p tsconfig.json --noEmit"
     },
     "devDependencies": {
-        "@krudi/prettier-config": "^0.1.6",
+        "@krudi/prettier-config": "^0.1.8",
         "@krudi/stylelint-config": "^0.1.1",
         "@krudi/typescript-config": "^0.1.9",
         "@nuxt/devtools": "^3.1.1",
@@ -53,11 +53,11 @@
         "postcss-nested": "^7.0.2",
         "ts-node": "^10.9.2",
         "typescript": "^5.9.3",
-        "vue-tsc": "^3.1.5"
+        "vue-tsc": "^3.1.6"
     },
-    "packageManager": "npm@11.6.2",
+    "packageManager": "npm@11.6.4",
     "engines": {
         "node": ">= 22.18.0",
-        "npm": ">= 11.6.2"
+        "npm": ">= 11.6.4"
     }
 }
