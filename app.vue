@@ -16,8 +16,7 @@ useSeoMeta({
     title: 'vue-boilerplate',
     viewport: 'width=device-width, initial-scale=1, maximum-scale=3',
     applicationName: 'vue-boilerplate',
-    description:
-        'A template with Nuxt3 built on Vue3 with focus on performance and best practices.',
+    description: 'A template with Nuxt3 built on Vue3 with focus on performance and best practices.',
     keywords: 'template',
     referrer: 'origin-when-cross-origin',
     themeColor: [
@@ -31,8 +30,7 @@ useSeoMeta({
         },
     ],
     ogTitle: 'My Amazing Site',
-    ogDescription:
-        'A template with Nuxt3 built on Vue3 with focus on performance and best practices.',
+    ogDescription: 'A template with Nuxt3 built on Vue3 with focus on performance and best practices.',
     ogUrl: 'http://127.0.0.1:3000',
     ogSiteName: 'vue-boilerplate',
     ogLocale: 'en-US',
@@ -47,8 +45,7 @@ useSeoMeta({
     twitterCreator: '@twitter',
     twitterCreatorId: '1467726470533754880',
     twitterTitle: 'vue-templat',
-    twitterDescription:
-        'A template with Nuxt3 built on Vue3 with focus on performance and best practices.',
+    twitterDescription: 'A template with Nuxt3 built on Vue3 with focus on performance and best practices.',
     twitterCard: 'app',
     twitterImage: {
         url: 'https://example.com/image.png',
@@ -62,8 +59,7 @@ useSeoMeta({
         noindex: false,
     },
     // @ts-expect-error: Concatenating googlebot directives into a single string due to library limitations on input type.
-    googlebot:
-        'noimageindex, max-video-preview:-1, max-image-preview:large, max-snippet:-1',
+    googlebot: 'noimageindex, max-video-preview:-1, max-image-preview:large, max-snippet:-1',
 });
 
 useHead({

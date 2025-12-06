@@ -7,15 +7,12 @@
         <h4>
             <b>404 Not Found</b>
         </h4>
-        <p>
-            The HTTP 404 Not Found response status code indicates that the
-            server cannot find the requested resource.
-        </p>
+        <p>The HTTP 404 Not Found response status code indicates that the server cannot find the requested resource.</p>
     </section>
 </template>
 
 <script setup lang="ts">
 definePageMeta({
-    layout: 'default'
+    layout: 'default',
 });
 </script>
