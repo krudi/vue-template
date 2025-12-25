@@ -24,6 +24,7 @@
     "type": "module",
     "scripts": {
         "build": "nuxt build",
+        "clean": "rm -rf .cache node_modules .nuxt .output",
         "dev": "nuxt dev",
         "generate": "nuxt generate",
         "lint:eslint": "eslint . --cache --cache-location .cache/.eslintcache",
