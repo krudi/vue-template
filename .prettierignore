@@ -20,5 +20,8 @@ public
 .prettierignore
 *.tsbuildinfo
 
+# SVG files
+*.svg
+
 # Lock files
 package-lock.json
