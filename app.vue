@@ -9,15 +9,19 @@
 </template>
 
 <script setup lang="ts">
-import '@/assets/styles/styles.css';
+import '@assets/styles/styles.css';
 
 useSeoMeta({
     charset: 'utf-8',
-    title: 'vue-boilerplate',
+    title: 'vue-template',
     viewport: 'width=device-width, initial-scale=1, maximum-scale=3',
-    applicationName: 'vue-boilerplate',
+    applicationName: 'vue-template',
     description: 'A template with Nuxt3 built on Vue3 with focus on performance and best practices.',
     keywords: 'template',
+    author: 'Patryk Kudlik',
+    creator: 'Patryk Kudlik',
+    publisher: 'Patryk Kudlik',
+    canonical: process.env.NUXT_PUBLIC_SITE_URL,
     referrer: 'origin-when-cross-origin',
     themeColor: [
         {
@@ -29,13 +33,13 @@ useSeoMeta({
             media: '(prefers-color-scheme: dark)',
         },
     ],
-    ogTitle: 'My Amazing Site',
+    ogTitle: 'vue-template',
     ogDescription: 'A template with Nuxt3 built on Vue3 with focus on performance and best practices.',
-    ogUrl: 'http://127.0.0.1:3000',
-    ogSiteName: 'vue-boilerplate',
+    ogUrl: process.env.NUXT_PUBLIC_SITE_URL,
+    ogSiteName: 'vue-template',
     ogLocale: 'en-US',
     ogImage: {
-        url: 'https://example.com/image.png',
+        url: `${process.env.NUXT_PUBLIC_SITE_URL}/meta-tags/page-view.png`,
         width: '1800',
         height: '1600',
         alt: 'Alternative description',
@@ -43,12 +47,11 @@ useSeoMeta({
     },
     twitterSite: '@twitter',
     twitterCreator: '@twitter',
-    twitterCreatorId: '1467726470533754880',
-    twitterTitle: 'vue-templat',
+    twitterTitle: 'vue-template',
     twitterDescription: 'A template with Nuxt3 built on Vue3 with focus on performance and best practices.',
     twitterCard: 'app',
     twitterImage: {
-        url: 'https://example.com/image.png',
+        url: `${process.env.NUXT_PUBLIC_SITE_URL}/meta-tags/page-view.png`,
         width: '1800',
         height: '1600',
         alt: 'Alternative description',
@@ -58,12 +61,16 @@ useSeoMeta({
         nofollow: false,
         noindex: false,
     },
-    // @ts-expect-error: Concatenating googlebot directives into a single string due to library limitations on input type.
     googlebot: 'noimageindex, max-video-preview:-1, max-image-preview:large, max-snippet:-1',
+    googleSiteVerification: 'Q9rK2mA0ZxWcE4B_HY8nLJpUoFqGdS7V5tI1eM6l3',
 });
 
 useHead({
     link: [
+        {
+            rel: 'canonical',
+            href: process.env.NUXT_PUBLIC_SITE_URL,
+        },
         {
             rel: 'shortcut icon',
             href: '/favicons/favicon.ico',
@@ -174,6 +181,10 @@ useHead({
     ],
 
     meta: [
+        {
+            name: 'google-site-verification',
+            content: 'Q9rK2mA0ZxWcE4B_HY8nLJpUoFqGdS7V5tI1eM6l3',
+        },
         {
             name: 'msapplication-config',
             content: 'browserconfig.xml',
