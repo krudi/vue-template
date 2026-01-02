@@ -2,7 +2,17 @@
     "extends": "./.nuxt/tsconfig.json",
     "compilerOptions": {
         "paths": {
-            "@/*": ["./*"]
+            "@/*": ["./*"],
+            "@composables/*": ["./composables/*"],
+            "@components/*": ["./components/*"],
+            "@layouts/*": ["./layouts/*"],
+            "@middleware/*": ["./middleware/*"],
+            "@pages/*": ["./pages/*"],
+            "@plugins/*": ["./plugins/*"],
+            "@server/*": ["./server/*"],
+            "@assets/*": ["./assets/*"],
+            "@types": ["./types/index"],
+            "@types/*": ["./types/*"]
         }
     },
     "include": ["**/*.ts", "**/*.vue"],
