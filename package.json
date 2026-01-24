@@ -42,7 +42,7 @@
         "@krudi/stylelint-config": "^0.1.1",
         "@krudi/typescript-config": "^0.1.9",
         "@nuxt/devtools": "^3.1.1",
-        "@nuxt/eslint": "^1.12.1",
+        "@nuxt/eslint": "^1.13.0",
         "@nuxt/types": "^2.18.1",
         "@types/node": "^24.10.9",
         "autoprefixer": "^10.4.23",
