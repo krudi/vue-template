@@ -41,7 +41,7 @@
         "@krudi/prettier-config": "^0.1.8",
         "@krudi/stylelint-config": "^0.1.1",
         "@krudi/typescript-config": "^0.1.9",
-        "@nuxt/devtools": "^3.2.0",
+        "@nuxt/devtools": "^3.2.1",
         "@nuxt/eslint": "^1.15.1",
         "@nuxt/types": "^2.18.1",
         "@types/node": "^24.10.13",
