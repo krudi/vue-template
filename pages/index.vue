@@ -109,7 +109,12 @@
 </template>
 
 <script setup lang="ts">
+import { definePageMeta } from '#imports';
+import { usePageSeo } from '@composables/use-page-seo';
+
 definePageMeta({
     layout: 'default',
 });
+
+usePageSeo({});
 </script>
