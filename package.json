@@ -19,7 +19,7 @@
     "author": {
         "name": "krudi",
         "email": "patryk.kudlik@gmail.com",
-        "url": "https://github.com/krudi"
+        "url": "https://krudi.io"
     },
     "type": "module",
     "scripts": {
@@ -35,7 +35,7 @@
         "lint:stylelint:fix": "stylelint --cache --cache-location .cache/.stylelintcache -c ./stylelint.config.mjs --fix **/*.css",
         "preview": "nuxt preview",
         "start": "node .output/server/index.mjs",
-        "typecheck": "tsc -p tsconfig.json --noEmit"
+        "typecheck": "nuxt typecheck"
     },
     "devDependencies": {
         "@krudi/prettier-config": "^0.1.8",
@@ -43,7 +43,6 @@
         "@krudi/typescript-config": "^0.1.9",
         "@nuxt/devtools": "^3.2.3",
         "@nuxt/eslint": "^1.15.2",
-        "@nuxt/types": "^2.18.1",
         "@types/node": "^24.12.0",
         "autoprefixer": "^10.4.27",
         "eslint": "^9.39.4",
@@ -58,7 +57,7 @@
     },
     "packageManager": "npm@11.6.4",
     "engines": {
-        "node": ">= 22.18.0",
+        "node": ">= 24.14.0",
         "npm": ">= 11.6.4"
     }
 }
