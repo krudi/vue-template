@@ -25,10 +25,18 @@ jobs:
       NUXT_PUBLIC_SITE_URL: ${{ secrets.NUXT_PUBLIC_SITE_URL }}
 
     steps:
-      - uses: krudi/reusable-actions/.github/actions/github-checkout@main
-      - uses: krudi/reusable-actions/.github/actions/node-setup@main
+
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
         with:
           cache: npm
-          node_version_file: .nvmrc
-      - uses: krudi/reusable-actions/.github/actions/node-install@main
-      - uses: krudi/reusable-actions/.github/actions/node-build@main
+          node-version-file: .nvmrc
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
