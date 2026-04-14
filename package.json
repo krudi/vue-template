@@ -44,7 +44,7 @@
         "@nuxt/devtools": "^3.2.4",
         "@nuxt/eslint": "^1.15.2",
         "@types/node": "^25.5.2",
-        "autoprefixer": "^10.4.27",
+        "autoprefixer": "^10.5.0",
         "eslint": "^10.2.0",
         "nuxt": "^4.4.2",
         "postcss": "^8.5.8",
