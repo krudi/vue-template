@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "project": {
+    "name": "vue-template",
+    "description": "Minimal Nuxt 4 + Vue 3 starter template",
+    "type": "nuxt",
+    "isTemplate": true
+  },
+  "stack": {
+    "language": "typescript",
+    "framework": "nuxt",
+    "frameworkVersion": "4",
+    "runtime": "node",
+    "packageManager": "npm"
+  },
+  "commands": {
+    "dev": "npm run dev",
+    "build": "npm run build",
+    "generate": "npm run generate",
+    "lint": "npm run lint",
+    "typecheck": "npm run typecheck"
+  },
+  "ports": {
+    "dev": 3000
+  },
+  "integrations": {
+    "sharedConfigs": "@krudi/eslint-config, @krudi/typescript-config, @krudi/prettier-config, @krudi/stylelint-config"
+  },
+  "docs": {
+    "agentsFile": "AGENTS.md",
+    "claudeFile": "CLAUDE.md",
+    "rules": ".ai/rules/nuxt.md",
+    "lessons": ".ai/memory/lessons.md"
+  }
+}
