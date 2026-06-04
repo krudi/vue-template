@@ -46,7 +46,7 @@
         "@types/node": "^25.5.2",
         "autoprefixer": "^10.4.27",
         "eslint": "^10.2.0",
-        "nuxt": "^4.4.2",
+        "nuxt": "^4.4.7",
         "postcss": "^8.5.8",
         "postcss-import": "^16.1.1",
         "postcss-load-config": "^6.0.1",
