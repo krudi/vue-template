@@ -1,42 +1,36 @@
 name: Build
 
 on:
-  push:
-    branches:
-      - main
-
-  pull_request:
-    types:
-      - opened
-      - synchronize
-      - reopened
+    push:
+        branches:
+            - main
+    pull_request:
+        types:
+            - opened
+            - synchronize
+            - reopened
 
 concurrency:
-  group: build-${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+    group: build-${{ github.workflow }}-${{ github.ref }}
+    cancel-in-progress: true
 
 permissions:
-  contents: read
+    contents: read
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    env:
-      NUXT_PUBLIC_SITE_URL: ${{ secrets.NUXT_PUBLIC_SITE_URL }}
+    build:
+        runs-on: ubuntu-latest
+        timeout-minutes: 15
 
-    steps:
+        env:
+            NUXT_PUBLIC_SITE_URL: ${{ secrets.NUXT_PUBLIC_SITE_URL }}
 
-      - name: Checkout repository
-        uses: actions/checkout@v6
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v6
-        with:
-          cache: npm
-          node-version-file: .nvmrc
+            - name: Set up Node workspace
+              uses: ./.github/actions/setup-node-workspace
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build project
-        run: npm run build
+            - name: Build
+              run: npm run build
