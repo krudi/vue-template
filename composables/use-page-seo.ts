@@ -1,6 +1,7 @@
-import { useHead, useSeoMeta } from '#imports';
 import { useSiteUrl } from '@composables/use-site-url';
 import { buildSiteMetadata } from '@utils/seo';
+
+import { useHead, useSeoMeta } from '#imports';
 
 type UsePageSeoOptions = {
     path?: string;
@@ -17,7 +18,6 @@ export function usePageSeo({ path = '/', title, description, keywords }: UsePage
     useSeoMeta({
         title: title ?? siteMetadata.title,
         description: description ?? siteMetadata.description,
-        keywords: (keywords ?? [...siteMetadata.keywords]).join(', '),
         ogTitle: title ?? siteMetadata.title,
         ogDescription: description ?? siteMetadata.description,
         ogUrl: canonicalUrl,
@@ -34,6 +34,12 @@ export function usePageSeo({ path = '/', title, description, keywords }: UsePage
             {
                 rel: 'canonical',
                 href: canonicalUrl,
+            },
+        ],
+        meta: [
+            {
+                name: 'keywords',
+                content: (keywords ?? [...siteMetadata.keywords]).join(', '),
             },
         ],
     });
