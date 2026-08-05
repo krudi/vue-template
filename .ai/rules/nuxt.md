@@ -29,10 +29,10 @@ alwaysApply: false
 - Components: PascalCase filename (`UserProfile.vue`)
 - Composables: camelCase with `use` prefix (`useUserSession.ts`)
 
-## Shared configs (from `@krudi/*`)
+## Tooling
 
-- ESLint: `@krudi/eslint-config` · TypeScript: `@krudi/typescript-config`
-- Prettier: `@krudi/prettier-config` · Stylelint: `@krudi/stylelint-config`
+- Lint + format: oxlint + oxfmt (root `.oxlintrc.json` / `.oxfmtrc.json`)
+- TypeScript: `@krudi/typescript-config`
 
 ## Commands
 
@@ -40,6 +40,6 @@ alwaysApply: false
 npm run dev        # dev server
 npm run build      # production build
 npm run generate   # static site generation
-npm run lint       # eslint + prettier + stylelint
+npm run lint       # oxlint + oxfmt --check
 npm run typecheck  # vue-tsc --noEmit
 ```
