@@ -156,5 +156,5 @@ export default defineNuxtConfig({
             ],
         },
     },
-    modules: ['@nuxt/eslint', '@nuxt/devtools'],
+    modules: ['@nuxt/devtools'],
 });

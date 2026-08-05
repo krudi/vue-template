@@ -1,0 +1,24 @@
+{
+    "$schema": "./node_modules/oxlint/configuration_schema.json",
+    "plugins": ["eslint", "typescript", "unicorn", "import"],
+    "categories": {
+        "correctness": "error"
+    },
+    "ignorePatterns": [
+        ".agents",
+        ".ai",
+        ".claude",
+        ".codex",
+        "node_modules",
+        "dist",
+        "build",
+        "coverage",
+        ".cache",
+        ".turbo",
+        "*.tsbuildinfo",
+        ".nuxt",
+        ".output",
+        "public",
+        "nuxt.d.ts"
+    ]
+}
