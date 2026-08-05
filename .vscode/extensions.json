@@ -1,12 +1,9 @@
 {
     "recommendations": [
-        "esbenp.prettier-vscode",
-        "dbaeumer.vscode-eslint",
-        "stylelint.vscode-stylelint",
+        "oxc.oxc-vscode",
         "editorconfig.editorconfig",
-        "redhat.vscode-xml",
         "redhat.vscode-yaml",
-        "nuxtr.nuxtr-vscode",
-        "vue.volar"
+        "vue.volar",
+        "nuxtr.nuxtr-vscode"
     ]
 }
