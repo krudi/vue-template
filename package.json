@@ -39,7 +39,7 @@
     "devDependencies": {
         "@krudi/typescript-config": "^0.1.9",
         "@nuxt/devtools": "^3.4.1",
-        "@types/node": "^26.1.2",
+        "@types/node": "^24.13.3",
         "autoprefixer": "^10.5.4",
         "nuxt": "^4.5.1",
         "oxfmt": "^0.62.0",
