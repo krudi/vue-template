@@ -1,8 +1,13 @@
 {
     "$schema": "./node_modules/oxlint/configuration_schema.json",
-    "plugins": ["eslint", "typescript", "unicorn", "import"],
+    "plugins": ["eslint", "typescript", "unicorn", "import", "oxc", "promise", "vue"],
+    "options": {
+        "reportUnusedDisableDirectives": "warn"
+    },
     "categories": {
-        "correctness": "error"
+        "correctness": "error",
+        "suspicious": "warn",
+        "perf": "warn"
     },
     "ignorePatterns": [
         ".agents",
