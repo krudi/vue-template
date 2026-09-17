@@ -7,7 +7,8 @@ and best practices.
 
 > [!NOTE]
 >
-> You need to have [Node.js](https://github.com/nodejs) installed on your computer before running this project.
+> You need to have [Node.js](https://github.com/nodejs) >= 24.19.0 and npm >= 12.0.0 installed on your computer
+> before running this project.
 
 1. First clone this repository and navigate into your project directory
 2. `copy .env.example .env` - copy the **.env** file
@@ -35,10 +36,10 @@ Build the application, generate every route as a HTML file and statically export
 
 - `npm run generate`: to generate static project files
 
-## Starting preview mode (only available when using **static** target)
+## Starting preview mode
 
 The option shows the current changes, that are made in development mode to check that everything works before deploying
-the condo to production.
+the code to production.
 
 - `npm run preview`: shows a live project preview
 
@@ -52,7 +53,7 @@ Start the production server (after running `npm run build`).
 
 Navigate into your project directory and start linting your files.
 
-- `npm run lint`: runs the shared Oxlint and Oxfmt checks
+- `npm run lint`: runs the Oxlint and Oxfmt checks
 - `npm run lint:ox`: lints JavaScript and TypeScript
     - `npm run lint:ox:fix`: fixes supported Oxlint findings
 - `npm run format:ox`: formats supported repository files

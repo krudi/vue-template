@@ -6,7 +6,7 @@ Nuxt project.
 ## Stack
 
 - Nuxt 4, Vue 3, TypeScript
-- Lint/format: oxlint + oxfmt · TypeScript config: `@krudi/typescript-config`
+- Lint/format: oxlint + oxfmt · TypeScript config: local `tsconfig.json` (project-owned, not shared)
 
 ## Commands
 
@@ -29,13 +29,6 @@ npm run typecheck  # vue-tsc --noEmit
 
 ---
 
-## Cross-project context
-
-- **Uses config from:** `shared-configs` (`@krudi/typescript-config`)
-- When `shared-configs` publishes a new version, update `package.json` in this template
-
----
-
 ## Rules
 
 @.ai/rules/nuxt.md @.ai/rules/styling.md @.ai/memory/lessons.md @.ai/skills/commit/SKILL.md @.ai/skills/pr/SKILL.md
@@ -46,4 +39,5 @@ npm run typecheck  # vue-tsc --noEmit
 - This is a template — keep it intentionally lean; do not add feature-specific code
 - When scaffolding a new project from this template, remind the user to update `package.json` name, `nuxt.config.ts`,
   `app.vue`, and create a project-specific `AGENTS.md` and `.ai/config.json`
-- Lint and format with oxlint + oxfmt; keep TypeScript config on `@krudi/typescript-config`
+- Lint and format with oxlint + oxfmt; keep TypeScript config local to this project (`tsconfig.json`), not a shared
+  package

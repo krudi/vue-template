@@ -37,7 +37,6 @@
         "typecheck": "nuxt typecheck"
     },
     "devDependencies": {
-        "@krudi/typescript-config": "^0.1.9",
         "@nuxt/devtools": "^3.4.1",
         "@types/node": "^24.13.3",
         "autoprefixer": "^10.5.4",

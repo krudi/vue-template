@@ -32,7 +32,7 @@ alwaysApply: false
 ## Tooling
 
 - Lint + format: oxlint + oxfmt (root `.oxlintrc.json` / `.oxfmtrc.json`)
-- TypeScript: `@krudi/typescript-config`
+- TypeScript: local `tsconfig.json` (project-owned, not a shared package)
 
 ## Commands
 
