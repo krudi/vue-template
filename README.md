@@ -7,8 +7,8 @@ and best practices.
 
 > [!NOTE]
 >
-> You need to have [Node.js](https://github.com/nodejs) >= 24.19.0 and npm >= 12.0.0 installed on your computer
-> before running this project.
+> You need to have [Node.js](https://github.com/nodejs) >= 24.19.0 and npm >= 12.0.0 installed on your computer before
+> running this project.
 
 1. First clone this repository and navigate into your project directory
 2. `copy .env.example .env` - copy the **.env** file
