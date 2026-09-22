@@ -45,7 +45,6 @@
         "oxlint": "^1.77.0",
         "postcss": "^8.5.25",
         "postcss-import": "^16.1.1",
-        "postcss-load-config": "^6.0.1",
         "postcss-nesting": "^14.0.1",
         "typescript": "^6.0.2",
         "vue-tsc": "^3.3.9"
