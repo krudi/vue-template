@@ -2,6 +2,8 @@ import { fileURLToPath } from 'node:url';
 
 import { defineNuxtConfig } from 'nuxt/config';
 
+import { siteMetadata } from './utils/seo';
+
 export default defineNuxtConfig({
     compatibilityDate: '2024-10-06',
     devtools: {
@@ -9,7 +11,7 @@ export default defineNuxtConfig({
     },
     runtimeConfig: {
         public: {
-            siteUrl: process.env.NUXT_PUBLIC_SITE_URL ?? 'http://localhost:3000',
+            siteUrl: process.env['NUXT_PUBLIC_SITE_URL'] ?? 'http://localhost:3000',
         },
     },
     alias: {
@@ -27,6 +29,9 @@ export default defineNuxtConfig({
     },
     app: {
         head: {
+            htmlAttrs: {
+                lang: siteMetadata.locale.replace('_', '-'),
+            },
             link: [
                 {
                     rel: 'shortcut icon',
@@ -149,12 +154,57 @@ export default defineNuxtConfig({
                     name: 'msapplication-TileColor',
                     content: '#ffffff',
                 },
-                {
-                    name: 'theme-color',
-                    content: '#ffffff',
-                },
             ],
         },
     },
-    modules: ['@nuxt/devtools'],
+    typescript: {
+        tsConfig: {
+            compilerOptions: {
+                exactOptionalPropertyTypes: true,
+                noImplicitReturns: true,
+                noImplicitOverride: true,
+                noPropertyAccessFromIndexSignature: true,
+                noUncheckedSideEffectImports: true,
+                verbatimModuleSyntax: true,
+                noFallthroughCasesInSwitch: true,
+            },
+        },
+        sharedTsConfig: {
+            compilerOptions: {
+                exactOptionalPropertyTypes: true,
+                noImplicitReturns: true,
+                noImplicitOverride: true,
+                noPropertyAccessFromIndexSignature: true,
+                noUncheckedSideEffectImports: true,
+                verbatimModuleSyntax: true,
+                noFallthroughCasesInSwitch: true,
+            },
+        },
+        nodeTsConfig: {
+            compilerOptions: {
+                exactOptionalPropertyTypes: true,
+                noImplicitReturns: true,
+                noImplicitOverride: true,
+                noPropertyAccessFromIndexSignature: true,
+                noUncheckedSideEffectImports: true,
+                verbatimModuleSyntax: true,
+                noFallthroughCasesInSwitch: true,
+            },
+        },
+    },
+    nitro: {
+        typescript: {
+            tsConfig: {
+                compilerOptions: {
+                    exactOptionalPropertyTypes: true,
+                    noImplicitReturns: true,
+                    noImplicitOverride: true,
+                    noPropertyAccessFromIndexSignature: true,
+                    noUncheckedSideEffectImports: true,
+                    verbatimModuleSyntax: true,
+                    noFallthroughCasesInSwitch: true,
+                },
+            },
+        },
+    },
 });
