@@ -10,7 +10,7 @@
     "start_url": "/",
     "lang": "en-US",
     "orientation": "any",
-    "prefer_related_applications": true,
+    "prefer_related_applications": false,
     "categories": ["template"],
     "icons": [
         {
