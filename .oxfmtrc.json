@@ -12,6 +12,10 @@
     "singleAttributePerLine": true,
     "proseWrap": "always",
     "sortImports": true,
+    "sortTailwindcss": {
+        "stylesheet": "app/assets/css/main.css",
+        "functions": ["cn", "cva"]
+    },
     "ignorePatterns": [
         ".agents",
         ".ai",
@@ -27,6 +31,6 @@
         "package-lock.json",
         "package.json",
         "*.svg",
-        "nuxt.d.ts"
+        "app/components/ui/**"
     ]
 }

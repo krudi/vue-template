@@ -1,4 +1,5 @@
 {
     "$schema": "https://unpkg.com/knip@6/schema.json",
-    "ignoreDependencies": ["vue", "vue-router", "vue-tsc"]
+    "entry": ["app/components/ui/**/*.{ts,vue}"],
+    "ignoreDependencies": ["vue-router", "vue-tsc"]
 }

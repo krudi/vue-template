@@ -15,7 +15,6 @@ dev-dist
 .nitro
 .nuxt
 .output
-nuxt.d.ts
 
 # Tooling cache files
 .cache

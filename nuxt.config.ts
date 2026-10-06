@@ -1,36 +1,83 @@
 import { fileURLToPath } from 'node:url';
 
+import tailwindcss from '@tailwindcss/vite';
 import { defineNuxtConfig } from 'nuxt/config';
 
-import { siteMetadata } from './utils/seo';
+import { siteMetadata } from './app/utils/seo';
 
 export default defineNuxtConfig({
-    compatibilityDate: '2024-10-06',
+    compatibilityDate: '2025-07-15',
+    modules: ['@nuxtjs/color-mode'],
     devtools: {
         enabled: true,
+    },
+    css: ['~/assets/css/main.css'],
+    colorMode: {
+        preference: 'system',
+        fallback: 'light',
+        classSuffix: '',
+    },
+    components: [
+        {
+            path: '~/components',
+            ignore: ['ui/**'],
+        },
+    ],
+    vite: {
+        plugins: [tailwindcss()],
     },
     runtimeConfig: {
         public: {
             siteUrl: process.env['NUXT_PUBLIC_SITE_URL'] ?? 'http://localhost:3000',
+            googleSiteVerification: process.env['GOOGLE_SITE_VERIFICATION'] ?? '',
+        },
+    },
+    $production: {
+        routeRules: {
+            '/**': {
+                headers: {
+                    'Content-Security-Policy': [
+                        "default-src 'self'",
+                        "script-src 'self' 'unsafe-inline'",
+                        "style-src 'self' 'unsafe-inline'",
+                        "img-src 'self' data: blob:",
+                        "font-src 'self'",
+                        "connect-src 'self'",
+                        "media-src 'self'",
+                        "object-src 'none'",
+                        "frame-src 'none'",
+                        "worker-src 'self' blob:",
+                        "manifest-src 'self'",
+                        "base-uri 'self'",
+                        "form-action 'self'",
+                        "frame-ancestors 'none'",
+                    ].join('; '),
+                    'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
+                    'X-Content-Type-Options': 'nosniff',
+                    'Referrer-Policy': 'strict-origin-when-cross-origin',
+                    'X-Frame-Options': 'DENY',
+                    'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), payment=(), browsing-topics=()',
+                },
+            },
         },
     },
     alias: {
-        '@': fileURLToPath(new URL('.', import.meta.url)),
-        '@composables': fileURLToPath(new URL('./composables', import.meta.url)),
-        '@components': fileURLToPath(new URL('./components', import.meta.url)),
-        '@layouts': fileURLToPath(new URL('./layouts', import.meta.url)),
-        '@middleware': fileURLToPath(new URL('./middleware', import.meta.url)),
-        '@pages': fileURLToPath(new URL('./pages', import.meta.url)),
-        '@plugins': fileURLToPath(new URL('./plugins', import.meta.url)),
+        '@': fileURLToPath(new URL('./app', import.meta.url)),
+        '@composables': fileURLToPath(new URL('./app/composables', import.meta.url)),
+        '@components': fileURLToPath(new URL('./app/components', import.meta.url)),
+        '@layouts': fileURLToPath(new URL('./app/layouts', import.meta.url)),
+        '@middleware': fileURLToPath(new URL('./app/middleware', import.meta.url)),
+        '@pages': fileURLToPath(new URL('./app/pages', import.meta.url)),
+        '@plugins': fileURLToPath(new URL('./app/plugins', import.meta.url)),
         '@server': fileURLToPath(new URL('./server', import.meta.url)),
-        '@assets': fileURLToPath(new URL('./assets', import.meta.url)),
-        '@utils': fileURLToPath(new URL('./utils', import.meta.url)),
-        '@models': fileURLToPath(new URL('./types', import.meta.url)),
+        '@assets': fileURLToPath(new URL('./app/assets', import.meta.url)),
+        '@utils': fileURLToPath(new URL('./app/utils', import.meta.url)),
     },
     app: {
         head: {
             htmlAttrs: {
                 lang: siteMetadata.locale.replace('_', '-'),
+                dir: 'ltr',
             },
             link: [
                 {
@@ -160,7 +207,6 @@ export default defineNuxtConfig({
     typescript: {
         tsConfig: {
             compilerOptions: {
-                exactOptionalPropertyTypes: true,
                 noImplicitReturns: true,
                 noImplicitOverride: true,
                 noPropertyAccessFromIndexSignature: true,
