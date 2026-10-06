@@ -6,8 +6,8 @@ does not read `AGENTS.md` by itself. Start every agent session at the repository
 that directory's `AGENTS.md` and none of the repository skills. Skills, adapters and nested instruction files point
 here; they never restate rules.
 
-Vue Template is a minimal Nuxt 4 + Vue 3 starter template, intentionally lean — only core dependencies. Use it as the
-base when starting a new Nuxt project.
+Vue Template is a minimal Nuxt 4 + Vue 3 starter template with Tailwind CSS v4 and shadcn-vue, intentionally lean — only
+core dependencies and no auth. Use it as the base when starting a new Nuxt project.
 
 ## Where knowledge lives
 
@@ -22,6 +22,9 @@ Do not create competing documentation; update the owner instead.
 ## Non-negotiables
 
 - This is a template — keep it intentionally lean; do not add feature-specific code.
+- `app/components/ui/**` is shadcn-vue vendor code and read-only: never edit, reformat, lint-autofix, regenerate or
+  overwrite it (for example `shadcn-vue add --overwrite`) without explicit approval. Customise through props and classes
+  at the call site or a wrapper outside `app/components/ui/`.
 - When scaffolding a new project from this template, remind the user of the steps in "Creating a project from this
   template" below.
 - Never read or print `.env` values or other secrets.
@@ -32,40 +35,54 @@ Do not create competing documentation; update the owner instead.
 ### Creating a project from this template
 
 1. Clone and rename the directory and the `package.json` `name` field
-2. Update `app.vue` and `nuxt.config.ts` with project metadata
+2. Update `app/app.vue` and `nuxt.config.ts` with project metadata
 3. Add project-specific dependencies
 4. Rewrite `AGENTS.md` with the project's stack and domain context
 
 ### Stack and tooling
 
-- Nuxt 4, Vue 3, TypeScript.
-- Lint and format with oxlint + oxfmt (root `.oxlintrc.json` / `.oxfmtrc.json`); oxfmt also formats CSS, oxlint does not
-  lint it.
+- Nuxt 4, Vue 3, TypeScript, Tailwind CSS v4 (`@tailwindcss/vite`), shadcn-vue (`reka-nova` style, neutral base colour,
+  Reka UI primitives, `@lucide/vue` icons; `components.json`) and `@nuxtjs/color-mode` (class strategy, light / dark /
+  system).
+- Lint and format with oxlint + oxfmt (root `.oxlintrc.json` / `.oxfmtrc.json`); oxfmt also formats CSS and sorts
+  Tailwind classes, oxlint does not lint CSS. Both ignore `app/components/ui/**` (also excluded in `lefthook.yml`), and
+  `knip.json` lists it as an entry so unused vendor exports are not reported.
+- Add shadcn-vue components with `npx shadcn-vue@latest add <name>`; they land in `app/components/ui/`.
 - TypeScript config is local to this project, not a shared package: `tsconfig.json` only references the generated
   `.nuxt/tsconfig.{app,server,shared,node}.json` projects, as the official Nuxt 4 starter does. Never add `include` or
   `compilerOptions` there; set compiler options in `nuxt.config.ts` (`typescript.tsConfig`, `typescript.sharedTsConfig`,
-  `typescript.nodeTsConfig`, `nitro.typescript.tsConfig`).
+  `typescript.nodeTsConfig`, `nitro.typescript.tsConfig`). `exactOptionalPropertyTypes` is off for the app project only,
+  because the shadcn-vue components forward optional Reka UI props and fail under it.
 - Type-aware oxlint rules (`oxlint-tsgolint`) read the generated `.nuxt/tsconfig.*.json`, so run `npm run prepare:nuxt`
   after a fresh install. They cover `.ts` files only, not `<script>` blocks in `.vue` files; `npm run typecheck`
   (`vue-tsc`) is the type gate for those.
+- Security headers (CSP, HSTS, `X-Frame-Options`, …) are set in `nuxt.config.ts` under `$production.routeRules`, so they
+  do not block Nuxt DevTools in `npm run dev`; `server/plugins/powered-by.ts` drops the `x-powered-by` header. The CSP
+  keeps `'unsafe-inline'` for scripts and styles: Nuxt's payload and the `@nuxtjs/color-mode` theme script are inline.
+- SEO defaults live in `app/utils/seo.ts` and `app/app.vue`; pages call `usePageSeo()`. The Open Graph image is
+  `public/images/meta-tags/page-view.png` (1200×630).
 
 ### Structure and naming
 
-- File-based routing in `pages/`; layouts in `layouts/`, composables in `composables/`, server routes in `server/api/`
-  and `server/routes/`.
+- Application sources live in `app/`, as in the official Nuxt 4 starter; `server/` and `public/` stay at the root.
+- File-based routing in `app/pages/` (`[...404].vue` renders the not-found page with a 404 status; `app/error.vue`
+  handles thrown errors); layouts in `app/layouts/`, composables in `app/composables/`, helpers in `app/utils/`, `cn()`
+  in `app/lib/utils.ts`, server routes in `server/api/` and `server/routes/`.
 - `<script setup lang="ts">` for every component — no Options API.
-- Components are PascalCase files (`PageHeader.vue`) and auto-imported from `components/`; pages are kebab-case
-  (`user-profile.vue`).
+- Components are PascalCase files (`PageHeader.vue`) and auto-imported from `app/components/`; pages are kebab-case
+  (`user-profile.vue`). `app/components/ui/` is excluded from auto-import: import shadcn-vue components explicitly
+  (`import { Button } from '@/components/ui/button'`).
 - Composables export a `use`-prefixed function (`usePageSeo`) from a kebab-case file (`use-page-seo.ts`) and are
-  auto-imported from `composables/`.
+  auto-imported from `app/composables/`.
 
 ### Styling
 
-- Global styles live in `assets/styles/` (`variables.css`, `base/`, `elements/`, `utilities/` partials); component
-  styles use `<style scoped>` in the `.vue` file.
-- Use CSS custom properties for design tokens — never hard-code colours or spacing.
-- Mobile-first: base styles for mobile, breakpoints for larger screens.
-- No `!important` unless overriding a third-party library; keep selector nesting to at most two levels.
+- Style with Tailwind utility classes in templates; merge conditional classes with `cn()`, and wrap `buttonVariants()`
+  (or any variant helper applied to a non-shadcn element) in `cn()` so conflicting classes resolve.
+- The only global stylesheet is `app/assets/css/main.css`: Tailwind, `tw-animate-css`, `shadcn-vue/tailwind.css`, the
+  self-hosted Geist font (`@fontsource-variable/geist`) and the design tokens (CSS variables for light and `.dark`).
+- Use the token-backed utilities (`bg-background`, `text-muted-foreground`, …) — never hard-code colours.
+- Mobile-first: base classes for mobile, breakpoint prefixes (`sm:`, `md:`) for larger screens.
 
 ## Working rules
 
