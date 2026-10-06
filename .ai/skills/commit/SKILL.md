@@ -20,6 +20,10 @@ description: Create a conventional commit for staged or unstaged changes. Inspec
 
 `feat` · `fix` · `docs` · `style` · `refactor` · `perf` · `test` · `build` · `ci` · `chore` · `revert`
 
+## Scopes
+
+Use practical scopes such as `seo`, `deps`, `node`, `tooling`, `vscode`, `ci` or `agents`.
+
 ## Never
 
 - Skip hooks (`--no-verify`)

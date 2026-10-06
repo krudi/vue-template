@@ -5,10 +5,8 @@ description: Run the project's full verification suite (lint, typecheck, build, 
 
 # Test
 
-Run the quality check for this Nuxt project:
+AGENTS.md is the single source for which checks to run:
 
-1. `npm run lint` — oxlint + oxfmt
-2. `npm run typecheck` — vue-tsc strict check
-3. `npm run build` — production build
-4. Report all failures with file:line references
-5. If all pass, confirm with a one-line summary
+1. Pick the rows of its verification table that match the changed areas (`git status`, `git diff HEAD`).
+2. For a final handoff, run every "before completion" command those rows list.
+3. Report failures with file:line references and the exact command; if all pass, confirm with a one-line summary.
