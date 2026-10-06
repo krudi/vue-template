@@ -73,10 +73,6 @@ usePageSeo({
     title: 'Your account',
 });
 
-useSeoMeta({
-    robots: 'noindex, nofollow',
-});
-
 const { data } = await useFetch('/api/account');
 
 if (!data.value) {

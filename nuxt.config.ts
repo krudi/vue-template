@@ -4,7 +4,7 @@ import { siteMetadata } from './app/utils/seo';
 
 export default defineNuxtConfig({
     compatibilityDate: '2025-07-15',
-    modules: ['@nuxt/ui'],
+    modules: ['@nuxt/ui', '@nuxtjs/sitemap', '@nuxtjs/robots', '@nuxt/image', '@nuxt/hints'],
     devtools: {
         enabled: true,
     },
@@ -26,6 +26,15 @@ export default defineNuxtConfig({
             siteUrl: 'http://localhost:3000',
             googleSiteVerification: '',
         },
+    },
+    routeRules: {
+        '/sign-in': { robots: false },
+        '/sign-up': { robots: false },
+        '/forgot-password': { robots: false },
+        '/reset-password': { robots: false },
+        '/two-factor': { robots: false },
+        '/verify-email': { robots: false },
+        '/account': { robots: false },
     },
     $production: {
         routeRules: {

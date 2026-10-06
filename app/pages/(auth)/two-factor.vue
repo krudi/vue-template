@@ -73,8 +73,4 @@ usePageSeo({
     path: '/two-factor',
     title: 'Two-factor authentication',
 });
-
-useSeoMeta({
-    robots: 'noindex, nofollow',
-});
 </script>

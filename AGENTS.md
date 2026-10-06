@@ -66,7 +66,13 @@ Do not create competing documentation; update the owner instead.
   `upgrade-insecure-requests` is added only when `BETTER_AUTH_URL` is https at build time. `app/plugins/zod.client.ts`
   sets zod to `jitless` so zod's `new Function` probe does not trip `script-src` in the browser.
 - SEO defaults live in `app/utils/seo.ts` and `app/app.vue`; pages call `usePageSeo()`. The Open Graph image is
-  `public/images/meta-tags/page-view.png` (1200×630).
+  `public/images/meta-tags/page-view.png` (1200×630). `@nuxtjs/robots` serves `/robots.txt` and `@nuxtjs/sitemap` serves
+  `/sitemap.xml`, both from the runtime site URL (`NUXT_PUBLIC_SITE_URL`); keep a page out of search with a
+  `robots: false` route rule in `nuxt.config.ts`, which sets `X-Robots-Tag` and drops it from the sitemap, instead of
+  per-page meta.
+- Use `<NuxtImg>`/`<NuxtPicture>` (`@nuxt/image`, served from `/_ipx` on the same origin) for images; a plain `<img>` is
+  only for local `blob:`/data-URL previews. `@nuxt/hints` adds performance and hydration hints to Nuxt DevTools in
+  development only.
 
 ### Auth, database and environment
 

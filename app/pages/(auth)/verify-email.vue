@@ -86,8 +86,4 @@ usePageSeo({
     path: '/verify-email',
     title: 'Verify your email',
 });
-
-useSeoMeta({
-    robots: 'noindex, nofollow',
-});
 </script>

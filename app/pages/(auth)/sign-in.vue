@@ -95,8 +95,4 @@ usePageSeo({
     path: '/sign-in',
     title: 'Sign in',
 });
-
-useSeoMeta({
-    robots: 'noindex, nofollow',
-});
 </script>

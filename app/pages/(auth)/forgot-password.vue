@@ -51,8 +51,4 @@ usePageSeo({
     path: '/forgot-password',
     title: 'Forgot your password?',
 });
-
-useSeoMeta({
-    robots: 'noindex, nofollow',
-});
 </script>

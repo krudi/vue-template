@@ -54,8 +54,4 @@ usePageSeo({
     path: '/sign-up',
     title: 'Create an account',
 });
-
-useSeoMeta({
-    robots: 'noindex, nofollow',
-});
 </script>

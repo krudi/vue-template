@@ -60,8 +60,4 @@ usePageSeo({
     path: '/reset-password',
     title: 'Set a new password',
 });
-
-useSeoMeta({
-    robots: 'noindex, nofollow',
-});
 </script>
