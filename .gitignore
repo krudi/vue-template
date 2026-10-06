@@ -11,6 +11,8 @@ node_modules
 build
 dist
 dev-dist
+.data
+.nitro
 .nuxt
 .output
 nuxt.d.ts
@@ -18,6 +20,10 @@ nuxt.d.ts
 # Tooling cache files
 .cache
 *.tsbuildinfo
+
+# Log files
+logs
+*.log
 
 # Agent tooling files
 .claude/settings.local.json
