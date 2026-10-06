@@ -1,8 +1,3 @@
-import { useSiteUrl } from '@composables/use-site-url';
-import { buildSiteMetadata } from '@utils/seo';
-
-import { useHead, useSeoMeta } from '#imports';
-
 type UsePageSeoOptions = {
     path?: string;
     title?: string;

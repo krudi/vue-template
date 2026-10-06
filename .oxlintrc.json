@@ -50,6 +50,7 @@
         ".nuxt",
         ".output",
         "public",
-        "app/components/ui/**"
+        "server/db/schemas/auth.ts",
+        "server/db/migrations"
     ]
 }

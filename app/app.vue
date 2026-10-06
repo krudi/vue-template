@@ -1,19 +1,14 @@
 <template>
-    <div>
+    <UApp>
         <NuxtLoadingIndicator />
 
         <NuxtLayout>
             <NuxtPage />
         </NuxtLayout>
-    </div>
+    </UApp>
 </template>
 
 <script setup lang="ts">
-import { useSiteUrl } from '@composables/use-site-url';
-import { buildSiteMetadata } from '@utils/seo';
-
-import { useHead, useRuntimeConfig, useSeoMeta } from '#imports';
-
 const siteUrl = useSiteUrl();
 const resolvedSiteMetadata = buildSiteMetadata(siteUrl);
 const googleSiteVerification = useRuntimeConfig().public.googleSiteVerification;

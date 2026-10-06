@@ -15,7 +15,6 @@ pre-commit:
               - '.output/**'
               - 'public/**'
               - 'nuxt.d.ts'
-              - 'app/components/ui/**'
           run: npx oxlint {staged_files}
           fail_text:
               'Fix the reported problems (`npm run lint:ox:fix` handles the auto-fixable ones) and stage the result.'
@@ -33,7 +32,6 @@ pre-commit:
               - '.nuxt/**'
               - '.output/**'
               - 'nuxt.d.ts'
-              - 'app/components/ui/**'
           run: npx oxfmt --check {staged_files}
           fail_text: 'Run `npm run format:ox` and stage the result.'
 

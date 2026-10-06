@@ -31,6 +31,7 @@
         "package-lock.json",
         "package.json",
         "*.svg",
-        "app/components/ui/**"
+        "server/db/schemas/auth.ts",
+        "server/db/migrations"
     ]
 }

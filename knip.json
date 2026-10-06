@@ -1,5 +1,6 @@
 {
     "$schema": "https://unpkg.com/knip@6/schema.json",
-    "entry": ["app/components/ui/**/*.{ts,vue}"],
-    "ignoreDependencies": ["vue-router", "vue-tsc"]
+    "entry": ["drizzle.config.ts"],
+    "ignoreDependencies": ["@iconify-json/lucide", "vue-tsc"],
+    "drizzle": false
 }

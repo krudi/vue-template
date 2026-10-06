@@ -1,39 +1,27 @@
 <template>
-    <footer class="py-8">
-        <Separator class="mb-4" />
-
-        <div class="flex flex-col items-center justify-between gap-3 text-sm text-muted-foreground sm:flex-row">
-            <p>
+    <UFooter>
+        <template #left>
+            <p class="text-sm text-muted">
                 &copy; {{ year }}
-                <NuxtLink
+                <ULink
                     to="/"
-                    class="hover:text-foreground"
+                    class="hover:text-highlighted"
                 >
                     vue-template
-                </NuxtLink>
+                </ULink>
             </p>
+        </template>
 
-            <nav
+        <template #right>
+            <UNavigationMenu
+                :items="navigationItems"
+                variant="link"
                 aria-label="Footer"
-                class="flex items-center gap-4"
-            >
-                <NuxtLink
-                    v-for="item in navigationItems"
-                    :key="item.to"
-                    :to="item.to"
-                    class="hover:text-foreground"
-                >
-                    {{ item.label }}
-                </NuxtLink>
-            </nav>
-        </div>
-    </footer>
+            />
+        </template>
+    </UFooter>
 </template>
 
 <script setup lang="ts">
-import { navigationItems } from '@utils/navigation';
-
-import { Separator } from '@/components/ui/separator';
-
 const year = new Date().getFullYear();
 </script>

@@ -1,35 +1,30 @@
-import { fileURLToPath } from 'node:url';
-
-import tailwindcss from '@tailwindcss/vite';
 import { defineNuxtConfig } from 'nuxt/config';
 
 import { siteMetadata } from './app/utils/seo';
 
 export default defineNuxtConfig({
     compatibilityDate: '2025-07-15',
-    modules: ['@nuxtjs/color-mode'],
+    modules: ['@nuxt/ui'],
     devtools: {
         enabled: true,
     },
     css: ['~/assets/css/main.css'],
-    colorMode: {
-        preference: 'system',
-        fallback: 'light',
-        classSuffix: '',
+    ui: {
+        fonts: false,
     },
-    components: [
-        {
-            path: '~/components',
-            ignore: ['ui/**'],
+    icon: {
+        serverBundle: {
+            collections: ['lucide'],
         },
-    ],
-    vite: {
-        plugins: [tailwindcss()],
+        clientBundle: {
+            scan: true,
+        },
+        fallbackToApi: false,
     },
     runtimeConfig: {
         public: {
-            siteUrl: process.env['NUXT_PUBLIC_SITE_URL'] ?? 'http://localhost:3000',
-            googleSiteVerification: process.env['GOOGLE_SITE_VERIFICATION'] ?? '',
+            siteUrl: 'http://localhost:3000',
+            googleSiteVerification: '',
         },
     },
     $production: {
@@ -51,6 +46,9 @@ export default defineNuxtConfig({
                         "base-uri 'self'",
                         "form-action 'self'",
                         "frame-ancestors 'none'",
+                        ...((process.env['BETTER_AUTH_URL'] ?? '').startsWith('https://')
+                            ? ['upgrade-insecure-requests']
+                            : []),
                     ].join('; '),
                     'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
                     'X-Content-Type-Options': 'nosniff',
@@ -60,18 +58,6 @@ export default defineNuxtConfig({
                 },
             },
         },
-    },
-    alias: {
-        '@': fileURLToPath(new URL('./app', import.meta.url)),
-        '@composables': fileURLToPath(new URL('./app/composables', import.meta.url)),
-        '@components': fileURLToPath(new URL('./app/components', import.meta.url)),
-        '@layouts': fileURLToPath(new URL('./app/layouts', import.meta.url)),
-        '@middleware': fileURLToPath(new URL('./app/middleware', import.meta.url)),
-        '@pages': fileURLToPath(new URL('./app/pages', import.meta.url)),
-        '@plugins': fileURLToPath(new URL('./app/plugins', import.meta.url)),
-        '@server': fileURLToPath(new URL('./server', import.meta.url)),
-        '@assets': fileURLToPath(new URL('./app/assets', import.meta.url)),
-        '@utils': fileURLToPath(new URL('./app/utils', import.meta.url)),
     },
     app: {
         head: {
@@ -207,6 +193,7 @@ export default defineNuxtConfig({
     typescript: {
         tsConfig: {
             compilerOptions: {
+                exactOptionalPropertyTypes: true,
                 noImplicitReturns: true,
                 noImplicitOverride: true,
                 noPropertyAccessFromIndexSignature: true,
