@@ -1,7 +1,7 @@
 export const siteMetadata = {
     name: 'vue-template',
     title: 'vue-template',
-    description: 'A template with Nuxt3 built on Vue3 with focus on performance and best practices.',
+    description: 'A template with Nuxt 4 built on Vue 3 with focus on performance and best practices.',
     keywords: ['template'],
     locale: 'en_US',
     twitterHandle: '@twitter',

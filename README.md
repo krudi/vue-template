@@ -1,7 +1,7 @@
 # vue-template
 
-A template with [Nuxt3](https://github.com/nuxt) built on [Vue3](https://github.com/vuejs/vue) with focus on performance
-and best practices.
+A template with [Nuxt 4](https://github.com/nuxt/nuxt) built on [Vue 3](https://github.com/vuejs/core) with focus on
+performance and best practices.
 
 ## Quick start
 
@@ -11,15 +11,17 @@ and best practices.
 > running this project.
 
 1. First clone this repository and navigate into your project directory
-2. `copy .env.example .env` - copy the **.env** file
+2. `cp .env.example .env` - copy the **.env** file
 3. Install the dependencies: `npm install`
-4. Run the development server: `npm run dev`
+4. Generate the Nuxt types (`.nuxt/`) for the editor and type-aware linting: `npm run prepare:nuxt`
+5. Install the Git hooks: `npm run install:lefthook`
+6. Run the development server: `npm run dev`
 
 ## Starting development mode
 
 To launch the project in development mode with hot module replacement.
 
-- `npm run dev`: to compile the [Vue3](https://github.com/vuejs/vue) and [Nuxt3](https://github.com/nuxt/framework)
+- `npm run dev`: to compile the [Vue 3](https://github.com/vuejs/core) and [Nuxt 4](https://github.com/nuxt/nuxt)
   application and serve it to the browser
 
 _You can view the development server at <http://localhost:3000>_
@@ -58,4 +60,7 @@ Navigate into your project directory and start linting your files.
     - `npm run lint:ox:fix`: fixes supported Oxlint findings
 - `npm run format:ox`: formats supported repository files
     - `npm run format:ox:check`: checks formatting without writing files
-- `npm run typecheck`: type-checks the project
+- `npm run typecheck`: type-checks the project with `vue-tsc`
+- `npm run knip`: reports unused files, exports and dependencies
+- `npm run verify:static`: runs `typecheck`, `lint` and `knip`
+- `npm run prepare:nuxt`: regenerates the Nuxt types in `.nuxt/`

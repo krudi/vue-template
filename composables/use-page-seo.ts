@@ -22,7 +22,7 @@ export function usePageSeo({ path = '/', title, description, keywords }: UsePage
         ogDescription: description ?? siteMetadata.description,
         ogUrl: canonicalUrl,
         ogSiteName: siteMetadata.name,
-        ogLocale: 'en-US',
+        ogLocale: siteMetadata.locale,
         ogImage: siteMetadata.ogImage.url,
         twitterTitle: title ?? siteMetadata.title,
         twitterDescription: description ?? siteMetadata.description,

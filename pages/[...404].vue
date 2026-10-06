@@ -12,9 +12,15 @@
 </template>
 
 <script setup lang="ts">
-import { definePageMeta } from '#imports';
+import { definePageMeta, setResponseStatus, useRequestEvent } from '#imports';
 
 definePageMeta({
     layout: 'default',
 });
+
+const event = useRequestEvent();
+
+if (event) {
+    setResponseStatus(event, 404, 'Page Not Found');
+}
 </script>

@@ -42,7 +42,7 @@ useSeoMeta({
     ogDescription: resolvedSiteMetadata.description,
     ogUrl: siteUrl,
     ogSiteName: resolvedSiteMetadata.name,
-    ogLocale: 'en-US',
+    ogLocale: resolvedSiteMetadata.locale,
     ogImage: {
         url: resolvedSiteMetadata.ogImage.url,
         width: String(resolvedSiteMetadata.ogImage.width),
