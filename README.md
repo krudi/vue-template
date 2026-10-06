@@ -1,35 +1,44 @@
 # vue-template
 
 A template with [Nuxt 4](https://github.com/nuxt/nuxt) built on [Vue 3](https://github.com/vuejs/core),
-[Tailwind CSS v4](https://tailwindcss.com) and [shadcn-vue](https://www.shadcn-vue.com) with focus on performance and
-best practices.
+[Tailwind CSS v4](https://tailwindcss.com) and [Nuxt UI](https://ui.nuxt.com) with focus on performance and best
+practices.
 
 ## Quick start
 
-> [!NOTE]
->
-> You need [Node.js](https://github.com/nodejs) >= 24.19.0 and npm >= 12.0.0.
+Prerequisites: [Node.js](https://nodejs.org) from `.nvmrc` and [Docker](https://www.docker.com) with Compose.
 
-1. Clone this repository and navigate into the project directory
-2. `cp .env.example .env` - copy the **.env** file
-3. `npm install` - install the dependencies
-4. `npm run prepare:nuxt` - generate the Nuxt types (`.nuxt/`) for the editor and type-aware linting
-5. `npm run install:lefthook` - install the Git hooks
-6. `npm run dev` - start the development server at <http://localhost:3000>
+1. `npm ci`
+2. `npm run install:lefthook`
+3. `cp .env.example .env`, then set `BETTER_AUTH_SECRET` from `npm run auth:secret`
+4. `npm run prepare:nuxt`: generates the Nuxt types (`.nuxt/`) used by the editor, type-aware linting and `db:seed`
+5. `docker compose up -d --wait`, `npm run db:migrate` and `NODE_ENV=development npm run db:seed`
+6. `npm run dev`: <http://localhost:3000>
+7. `npm run build` and `npm run start`
 
-Build for production with `npm run build` and serve the result with `npm run start`; `npm run generate` exports a static
-site and `npm run preview` previews the build.
+## Local database (Docker Compose)
+
+The app talks to a Postgres database and, for local email previews (verification, password reset, welcome and security
+emails), a Mailpit SMTP server. Both are defined in `compose.yaml`.
+
+- `docker compose up -d --wait`: starts the `postgres` and `mailpit` containers
+- `npm run db:migrate`: applies pending Drizzle migrations (`drizzle-kit migrate`)
+- `npm run db:generate`: generates new Drizzle migrations from schema changes (`drizzle-kit generate`)
+- `NODE_ENV=development npm run db:seed`: creates the verified local account `user@mail.com`
+- `npm run auth:generate`: regenerates the Drizzle auth schema from the Better Auth config
+- `docker compose down`: stops the local containers
+
+Postgres listens on `127.0.0.1:5436` and Mailpit SMTP on `127.0.0.1:1027`. Mailpit's web UI is available at
+<http://localhost:8026>; override the ports with `POSTGRES_PORT`, `MAILPIT_SMTP_PORT` and `MAILPIT_WEB_PORT` in `.env`.
 
 ## Commands for linting/fixing files
 
-Navigate into your project directory and start linting your files.
-
-- `npm run lint`: runs the Oxlint and Oxfmt checks
+- `npm run lint`: runs the shared Oxlint and Oxfmt checks
 - `npm run lint:ox`: lints JavaScript and TypeScript
     - `npm run lint:ox:fix`: fixes supported Oxlint findings
 - `npm run format:ox`: formats supported repository files
     - `npm run format:ox:check`: checks formatting without writing files
 - `npm run typecheck`: type-checks the project with `vue-tsc`
 - `npm run knip`: reports unused files, exports and dependencies
-- `npm run verify:static`: runs `typecheck`, `lint` and `knip`
+- `npm run verify:static`: runs typecheck, lint and Knip in one command
 - `npm run prepare:nuxt`: regenerates the Nuxt types in `.nuxt/`
