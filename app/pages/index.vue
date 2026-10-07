@@ -37,11 +37,13 @@ definePageMeta({
     layout: 'default',
 });
 
-usePageSeo({
-    path: '/',
+useSeoMeta({
     title: 'Homepage',
     description: 'A Nuxt starter template built with Vue, Tailwind CSS v4, and Nuxt UI.',
-    keywords: ['vue template', 'nuxt', 'homepage', 'starter'],
+    ogTitle: 'Homepage | vue-template',
+    ogDescription: 'A Nuxt starter template built with Vue, Tailwind CSS v4, and Nuxt UI.',
+    twitterTitle: 'Homepage | vue-template',
+    twitterDescription: 'A Nuxt starter template built with Vue, Tailwind CSS v4, and Nuxt UI.',
 });
 
 const { data: session } = await authClient.useSession(useFetch);

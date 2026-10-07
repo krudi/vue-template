@@ -91,8 +91,7 @@ async function onSubmit({ data: value }: FormSubmitEvent<z.output<typeof signInS
     await navigateTo('/');
 }
 
-usePageSeo({
-    path: '/sign-in',
+useSeoMeta({
     title: 'Sign in',
 });
 </script>

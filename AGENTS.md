@@ -65,11 +65,24 @@ Do not create competing documentation; update the owner instead.
   keeps `'unsafe-inline'` for scripts and styles: Nuxt's payload, the color-mode script and Nuxt UI's styles are inline.
   `upgrade-insecure-requests` is added only when `BETTER_AUTH_URL` is https at build time. `app/plugins/zod.client.ts`
   sets zod to `jitless` so zod's `new Function` probe does not trip `script-src` in the browser.
-- SEO defaults live in `app/utils/seo.ts` and `app/app.vue`; pages call `usePageSeo()`. The Open Graph image is
-  `public/images/meta-tags/page-view.png` (1200×630). `@nuxtjs/robots` serves `/robots.txt` and `@nuxtjs/sitemap` serves
-  `/sitemap.xml`, both from the runtime site URL (`NUXT_PUBLIC_SITE_URL`); keep a page out of search with a
-  `robots: false` route rule in `nuxt.config.ts`, which sets `X-Robots-Tag` and drops it from the sitemap, instead of
-  per-page meta.
+- SEO uses Nuxt's built-in head (Unhead) with no SEO module: `app/app.vue` sets the site-wide defaults (title template,
+  description, `og:site_name`/`og:locale`/`og:type`, the Open Graph image `public/images/meta-tags/page-view.png`
+  (1200×630), theme colours, `google-site-verification` when set) and builds the canonical link and `og:url` from the
+  current route and `runtimeConfig.public.siteUrl`, plus default `og:title`/`og:description`, the Twitter tags, the
+  author/creator/publisher, `referrer` and `googlebot` meta, all placeholders to fill per project. Its `robots`
+  `index, follow` default has `tagPriority: 'low'` so `@nuxtjs/robots` rules win. Pages call
+  `useSeoMeta({ title, description })`; indexable pages also pass `ogTitle`, `ogDescription`, `twitterTitle` and
+  `twitterDescription`, while noindex pages keep the defaults. `@nuxtjs/robots` serves `/robots.txt` and
+  `@nuxtjs/sitemap` serves `/sitemap.xml`, both from the runtime site URL (`NUXT_PUBLIC_SITE_URL`); keep a page out of
+  search with a `robots: false` route rule in `nuxt.config.ts`, which sets `X-Robots-Tag` and drops it from the sitemap,
+  instead of per-page meta. Pages that only exist at render time (`app/error.vue`, `app/pages/[...404].vue`) call
+  `useRobotsRule(false)`.
+- Icons and PWA follow the shared web head standard (`references/web-head-standard.md` of the `consistency-audit` skill
+  in the dotfiles repo): `public/` holds `favicon.ico` (16/32/48), `favicon-32x32.png`, `apple-touch-icon.png` (180×180,
+  opaque), `icon-192x192.png` and `icon-512x512.png` at the web root, linked from `nuxt.config.ts` `app.head.link`
+  together with the manifest. `public/manifest.webmanifest` is the only manifest; its `theme_color` equals the light
+  `theme-color` in `app/app.vue`. There is no service worker: the app is installable from the manifest alone and nothing
+  is cached offline.
 - Use `<NuxtImg>`/`<NuxtPicture>` (`@nuxt/image`, served from `/_ipx` on the same origin) for images; a plain `<img>` is
   only for local `blob:`/data-URL previews. `@nuxt/hints` adds performance and hydration hints to Nuxt DevTools in
   development only.
@@ -124,7 +137,7 @@ Do not create competing documentation; update the owner instead.
 - `<script setup lang="ts">` for every component — no Options API.
 - Components are PascalCase files (`PageHeader.vue`) and auto-imported from `app/components/`; pages are kebab-case
   (`user-profile.vue`). Nuxt UI components (`UButton`, `UForm`, …) are auto-imported by the module.
-- Composables export a `use`-prefixed function (`usePageSeo`) from a kebab-case file (`use-page-seo.ts`) and are
+- Composables export a `use`-prefixed function (`useSignOut`) from a kebab-case file (`use-sign-out.ts`) and are
   auto-imported from `app/composables/`.
 
 ### Styling

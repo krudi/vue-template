@@ -82,8 +82,7 @@ async function onSubmit({ data: value }: FormSubmitEvent<z.output<typeof resendV
     await resendVerificationEmail(value.email);
 }
 
-usePageSeo({
-    path: '/verify-email',
+useSeoMeta({
     title: 'Verify your email',
 });
 </script>

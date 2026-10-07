@@ -18,8 +18,9 @@ definePageMeta({
 
 useSeoMeta({
     title: 'Page not found',
-    robots: 'noindex',
 });
+
+useRobotsRule(false);
 
 const event = useRequestEvent();
 

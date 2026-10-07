@@ -68,8 +68,7 @@ definePageMeta({
     middleware: 'auth',
 });
 
-usePageSeo({
-    path: '/account',
+useSeoMeta({
     title: 'Your account',
 });
 

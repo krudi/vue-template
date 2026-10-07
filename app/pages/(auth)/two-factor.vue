@@ -69,8 +69,7 @@ async function onBackupSubmit({ data: value }: FormSubmitEvent<z.output<typeof b
     await navigateTo('/');
 }
 
-usePageSeo({
-    path: '/two-factor',
+useSeoMeta({
     title: 'Two-factor authentication',
 });
 </script>

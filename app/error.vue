@@ -36,8 +36,9 @@ const { error } = defineProps<{
 
 useSeoMeta({
     title: error.status === 404 ? 'Page not found' : 'Something went wrong',
-    robots: 'noindex',
 });
+
+useRobotsRule(false);
 
 function handleError() {
     void clearError({ redirect: '/' });

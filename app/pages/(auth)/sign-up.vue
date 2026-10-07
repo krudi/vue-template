@@ -50,8 +50,7 @@ async function onSubmit({ data: value }: FormSubmitEvent<z.output<typeof signUpS
     await navigateTo(verifyEmailPendingHref(value.email));
 }
 
-usePageSeo({
-    path: '/sign-up',
+useSeoMeta({
     title: 'Create an account',
 });
 </script>

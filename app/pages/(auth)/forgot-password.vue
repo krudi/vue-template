@@ -47,8 +47,7 @@ async function onSubmit({ data: value }: FormSubmitEvent<z.output<typeof forgotP
     sent.value = true;
 }
 
-usePageSeo({
-    path: '/forgot-password',
+useSeoMeta({
     title: 'Forgot your password?',
 });
 </script>

@@ -56,8 +56,7 @@ async function onSubmit({ data: value }: FormSubmitEvent<z.output<typeof resetPa
     await navigateTo('/sign-in');
 }
 
-usePageSeo({
-    path: '/reset-password',
+useSeoMeta({
     title: 'Set a new password',
 });
 </script>
