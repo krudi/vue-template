@@ -131,6 +131,9 @@ export default defineNuxtConfig({
         },
     },
     nitro: {
+        experimental: {
+            tasks: true,
+        },
         typescript: {
             tsConfig: {
                 compilerOptions: {

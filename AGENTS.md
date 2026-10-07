@@ -94,8 +94,8 @@ Do not create competing documentation; update the owner instead.
 - Paths follow Nuxt 4 conventions: app code imports with `~/`, code shared by app and server lives in `shared/` and is
   imported with `#shared/...` (`#shared/schemas/auth`, `#shared/auth/security`, `#shared/config/uploads`), and
   Nitro-only files (`server/api/`, `server/plugins/`, `server/utils/`) import with `#server/...`. Files the CLIs load
-  (`server/auth/`, `server/db/`, `server/env.ts`) use relative imports so drizzle-kit, the Better Auth CLI and `tsx`
-  resolve them.
+  (`server/auth/`, `server/db/`, `server/env.ts`) use relative imports so drizzle-kit and the Better Auth CLI resolve
+  them.
 - Auth: Better Auth is configured in `server/auth/auth.ts` and served by `server/api/auth/[...all].ts`; the Vue client
   is `app/utils/auth-client.ts` (`better-auth/vue`), and components read the session with
   `authClient.useSession(useFetch)` so it renders on the server. Self-serve sign-up is enabled and requires email
@@ -115,11 +115,12 @@ Do not create competing documentation; update the owner instead.
   its sections from `app/components/auth/` (auto-imported as `Auth*`) with `UForm` + `UFormField`. All forms validate
   with the zod schemas in `shared/schemas/auth.ts`; `useToast()` for feedback, `UPinInput` for codes,
   `UInput type="password"` for passwords and `qrcode.vue` for the TOTP QR code.
-- `NODE_ENV=development npm run db:seed` creates the verified fixture account `user@mail.com` (password hardcoded in
-  `server/db/seeders/user.ts`). It refuses to run unless `NODE_ENV` is exactly `development` and `DATABASE_URL` points
-  at `vue_template_local_db` on `localhost`/`127.0.0.1:5436`, and it never modifies an existing account. These checks
-  catch accidents only; keep seeding out of production deploy paths. It runs through `tsx` with
-  `.nuxt/tsconfig.server.json` so `#shared` resolves; run `npm run prepare:nuxt` first.
+- `npm run db:seed` runs the `db:seed` Nitro task (`server/tasks/db/seed.ts`, `nitro.experimental.tasks`) and creates
+  the verified fixture account `user@mail.com` (password hardcoded in `server/db/seeders/user.ts`). `nuxt task run`
+  talks to the running dev server's `/_nitro/tasks` route, which exists only in development, so the owner starts
+  `npm run dev` first. The task refuses to run unless `NODE_ENV` is `development` or `test` and `DATABASE_URL` points at
+  `vue_template_local_db` on `localhost`/`127.0.0.1:5436`, and it never modifies an existing account. These checks catch
+  accidents only; keep seeding out of production deploy paths.
 - Environment variables are declared as zod schemas in `server/env.ts` and validated by `createEnv` from
   `@t3-oss/env-nuxt` (`emptyStringAsUndefined`), the Nuxt counterpart of react-template's `@t3-oss/env-nextjs`;
   `server/plugins/environment.ts` validates them when the server starts. `NUXT_PUBLIC_SITE_URL` and

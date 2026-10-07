@@ -7,7 +7,3 @@ import * as schema from './schemas';
 const queryClient = postgres(env.DATABASE_URL);
 
 export const db = drizzle(queryClient, { schema });
-
-export async function closeDatabase(): Promise<void> {
-    await queryClient.end();
-}

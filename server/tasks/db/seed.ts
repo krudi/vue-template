@@ -1,3 +1,4 @@
+import { seedUser } from '../../db/seeders/user';
 import { env } from '../../env';
 
 const SEEDABLE_NODE_ENVS = new Set(['development', 'test']);
@@ -38,14 +39,16 @@ function assertSeedableDatabase(): void {
     }
 }
 
-assertSeedableEnvironment();
-assertSeedableDatabase();
+export default defineTask({
+    meta: {
+        name: 'db:seed',
+        description: 'Create the verified local fixture account',
+    },
+    async run() {
+        assertSeedableEnvironment();
+        assertSeedableDatabase();
+        await seedUser();
 
-const { closeDatabase } = await import('../client');
-const { seedUser } = await import('./user');
-
-try {
-    await seedUser();
-} finally {
-    await closeDatabase();
-}
+        return { result: 'seeded' };
+    },
+});

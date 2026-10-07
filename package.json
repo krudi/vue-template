@@ -30,7 +30,7 @@
         "clean": "rm -rf .cache node_modules .nuxt .output",
         "db:generate": "drizzle-kit generate",
         "db:migrate": "drizzle-kit migrate",
-        "db:seed": "NODE_ENV=${NODE_ENV:-development} TSX_TSCONFIG_PATH=.nuxt/tsconfig.server.json node --env-file=.env --import tsx ./server/db/seeders/index.ts",
+        "db:seed": "nuxt task run db:seed",
         "dev": "nuxt dev",
         "format:ox": "oxfmt .",
         "format:ox:check": "oxfmt --check .",
@@ -84,7 +84,6 @@
         "oxfmt": "^0.72.0",
         "oxlint": "^1.87.0",
         "oxlint-tsgolint": "^7.0.2003",
-        "tsx": "^4.23.15",
         "typescript": "^6.0.2",
         "vue-tsc": "^3.3.12"
     }
