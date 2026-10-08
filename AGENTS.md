@@ -7,9 +7,8 @@ that directory's `AGENTS.md` and none of the repository skills. Skills, adapters
 here; they never restate rules.
 
 Vue Template is a Nuxt 4 + Vue 3 starter with Better Auth (email/password, two-factor), Drizzle ORM + PostgreSQL,
-Tailwind CSS v4 and Nuxt UI. It is the base for new Nuxt projects, so it stays intentionally lean. It offers the same
-features, pages and env vars as react-template but follows Nuxt best practice rather than mirroring react-template's
-files.
+Tailwind CSS v4 and Nuxt UI. It is the base for new Nuxt projects, so it stays intentionally lean and follows Nuxt best
+practice.
 
 ## Where knowledge lives
 
@@ -65,18 +64,18 @@ Do not create competing documentation; update the owner instead.
   keeps `'unsafe-inline'` for scripts and styles: Nuxt's payload, the color-mode script and Nuxt UI's styles are inline.
   `upgrade-insecure-requests` is added only when `BETTER_AUTH_URL` is https at build time. `app/plugins/zod.client.ts`
   sets zod to `jitless` so zod's `new Function` probe does not trip `script-src` in the browser.
-- SEO uses Nuxt's built-in head (Unhead) with no SEO module: `app/app.vue` sets the site-wide defaults (title template,
-  description, `og:site_name`/`og:locale`/`og:type`, the Open Graph image `public/images/meta-tags/page-view.png`
-  (1200×630), theme colours, `google-site-verification` when set) and builds the canonical link and `og:url` from the
-  current route and `runtimeConfig.public.siteUrl`, plus default `og:title`/`og:description`, the Twitter tags, the
-  author/creator/publisher, `referrer` and `googlebot` meta, all placeholders to fill per project. Its `robots`
-  `index, follow` default has `tagPriority: 'low'` so `@nuxtjs/robots` rules win. Pages call
-  `useSeoMeta({ title, description })`; indexable pages also pass `ogTitle`, `ogDescription`, `twitterTitle` and
-  `twitterDescription`, while noindex pages keep the defaults. `@nuxtjs/robots` serves `/robots.txt` and
-  `@nuxtjs/sitemap` serves `/sitemap.xml`, both from the runtime site URL (`NUXT_PUBLIC_SITE_URL`); keep a page out of
-  search with a `robots: false` route rule in `nuxt.config.ts`, which sets `X-Robots-Tag` and drops it from the sitemap,
-  instead of per-page meta. Pages that only exist at render time (`app/error.vue`, `app/pages/[...404].vue`) call
-  `useRobotsRule(false)`.
+- SEO uses Nuxt's built-in head (Unhead) plus `@nuxtjs/sitemap` and `@nuxtjs/robots`: `app/app.vue` sets the site-wide
+  defaults (title template, description, `og:site_name`/`og:locale`/`og:type`, the Open Graph image
+  `public/images/meta-tags/page-view.png` (1200×630), theme colours, `google-site-verification` when set) and builds the
+  canonical link and `og:url` from the current route and `runtimeConfig.public.siteUrl`, plus default
+  `og:title`/`og:description`, the Twitter tags, the author/creator/publisher, `referrer` and `googlebot` meta, all
+  placeholders to fill per project. Its `robots` `index, follow` default has `tagPriority: 'low'` so `@nuxtjs/robots`
+  rules win. Pages call `useSeoMeta({ title, description })`; indexable pages also pass `ogTitle`, `ogDescription`,
+  `twitterTitle` and `twitterDescription`, while noindex pages keep the defaults. `@nuxtjs/robots` serves `/robots.txt`
+  and `@nuxtjs/sitemap` serves `/sitemap.xml`, both from the runtime site URL (`NUXT_PUBLIC_SITE_URL`); keep a page out
+  of search with a `robots: false` route rule in `nuxt.config.ts`, which sets `X-Robots-Tag` and drops it from the
+  sitemap, instead of per-page meta. Pages that only exist at render time (`app/error.vue`, `app/pages/[...404].vue`)
+  call `useRobotsRule(false)`.
 - Icons and PWA follow the shared web head standard (`references/web-head-standard.md` of the `consistency-audit` skill
   in the dotfiles repo): `public/` holds `favicon.ico` (16/32/48), `favicon-32x32.png`, `apple-touch-icon.png` (180×180,
   opaque), `icon-192x192.png` and `icon-512x512.png` at the web root, linked from `nuxt.config.ts` `app.head.link`
@@ -122,11 +121,10 @@ Do not create competing documentation; update the owner instead.
   `vue_template_local_db` on `localhost`/`127.0.0.1:5436`, and it never modifies an existing account. These checks catch
   accidents only; keep seeding out of production deploy paths.
 - Environment variables are declared as zod schemas in `server/env.ts` and validated by `createEnv` from
-  `@t3-oss/env-nuxt` (`emptyStringAsUndefined`), the Nuxt counterpart of react-template's `@t3-oss/env-nextjs`;
-  `server/plugins/environment.ts` validates them when the server starts. `NUXT_PUBLIC_SITE_URL` and
-  `NUXT_PUBLIC_GOOGLE_SITE_VERIFICATION` override `runtimeConfig.public.siteUrl` / `googleSiteVerification` when the
-  server starts; `nuxt.config.ts` holds only defaults and never reads `process.env` for runtime values, because the
-  config is frozen at build time. Add new variables to the schema and to `.env.example`.
+  `@t3-oss/env-nuxt` (`emptyStringAsUndefined`); `server/plugins/environment.ts` validates them when the server starts.
+  `NUXT_PUBLIC_SITE_URL` and `NUXT_PUBLIC_GOOGLE_SITE_VERIFICATION` override `runtimeConfig.public.siteUrl` /
+  `googleSiteVerification` when the server starts; `nuxt.config.ts` holds only defaults and never reads `process.env`
+  for runtime values, because the config is frozen at build time. Add new variables to the schema and to `.env.example`.
 
 ### Structure and naming
 
