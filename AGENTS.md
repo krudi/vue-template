@@ -1,10 +1,6 @@
 # Agent instructions
 
-This file is the canonical instruction source for every coding agent. `CLAUDE.md` only imports it, because Claude Code
-does not read `AGENTS.md` by itself. Start every agent session at the repository root: Claude Code expands the
-`@AGENTS.md` import only for the working directory's `CLAUDE.md`, and Codex started inside a subdirectory loads only
-that directory's `AGENTS.md` and none of the repository skills. Skills, adapters and nested instruction files point
-here; they never restate rules.
+Start agent sessions at the repository root.
 
 Vue Template is a Nuxt 4 + Vue 3 starter with Better Auth (email/password, two-factor), Drizzle ORM + PostgreSQL,
 Tailwind CSS v4 and Nuxt UI. It is the base for new Nuxt projects, so it stays intentionally lean and follows Nuxt best
@@ -17,6 +13,7 @@ practice.
 | Setup, local services, npm scripts         | `README.md`                                            |
 | Conventions, commands, verification        | this file                                              |
 | Repeatable workflows (commit, PR, test, …) | `.ai/skills/<name>/SKILL.md` — pick by its description |
+| Third-party skills                         | `skills-lock.json` (`npx skills`)                      |
 
 Do not create competing documentation; update the owner instead.
 
@@ -43,120 +40,79 @@ Do not create competing documentation; update the owner instead.
 
 ### Stack and tooling
 
-- Nuxt 4, Vue 3, TypeScript, Nuxt UI v4 (`@nuxt/ui` module: Tailwind CSS v4, Reka UI primitives, `@nuxt/icon`,
-  `@nuxtjs/color-mode`). Theme colours live in `app/app.config.ts` (`ui.colors`) and CSS variables in
-  `app/assets/css/main.css`; `<UApp>` wraps `app/app.vue` and `app/error.vue` for toasts and overlays.
-- Icons use the locally installed `@iconify-json/lucide` collection (`i-lucide-*`), bundled on the server and scanned
-  into the client bundle with `fallbackToApi: false`, so nothing is fetched from the Iconify API. The `@nuxt/fonts`
-  integration is off (`ui.fonts: false`); Geist is self-hosted through `@fontsource-variable/geist`.
-- Lint and format with oxlint + oxfmt (root `.oxlintrc.json` / `.oxfmtrc.json`); oxfmt also formats CSS and sorts
-  Tailwind classes, oxlint does not lint CSS. Both ignore the generated auth schema and migrations.
-- TypeScript config is local to this project, not a shared package: `tsconfig.json` only references the generated
-  `.nuxt/tsconfig.{app,server,shared,node}.json` projects, as the official Nuxt 4 starter does. Never add `include` or
-  `compilerOptions` there; set compiler options in `nuxt.config.ts` (`typescript.tsConfig`, `typescript.sharedTsConfig`,
-  `typescript.nodeTsConfig`, `nitro.typescript.tsConfig`). Every project uses the same strict flags, including
-  `exactOptionalPropertyTypes` and `noPropertyAccessFromIndexSignature`.
+- Theme colours live in `app/app.config.ts` (`ui.colors`) and CSS variables in `app/assets/css/main.css`; `<UApp>` wraps
+  `app/app.vue` and `app/error.vue` for toasts and overlays.
+- Icons come only from the local `@iconify-json/lucide` collection (`i-lucide-*`, `icon` in `nuxt.config.ts`), never the
+  Iconify API; Geist is self-hosted through `@fontsource-variable/geist` (`ui.fonts: false`).
+- Lint and format with oxlint + oxfmt (`.oxlintrc.json`, `.oxfmtrc.json`, which hold the ignore lists); oxfmt also
+  formats CSS and sorts Tailwind classes, oxlint does not lint CSS.
+- `tsconfig.json` only references the generated `.nuxt/tsconfig.*.json` projects, as the official Nuxt 4 starter does.
+  Never add `include` or `compilerOptions` there; set compiler options in the `typescript.*` and
+  `nitro.typescript.tsConfig` blocks of `nuxt.config.ts`, keeping the same strict flags in all of them.
 - Type-aware oxlint rules (`oxlint-tsgolint`) read the generated `.nuxt/tsconfig.*.json`, so run `npm run prepare:nuxt`
   after a fresh install. They cover `.ts` files only, not `<script>` blocks in `.vue` files; `npm run typecheck`
   (`vue-tsc`) is the type gate for those.
-- Security headers (CSP, HSTS, `X-Frame-Options`, …) are set in `nuxt.config.ts` under `$production.routeRules`, so they
-  do not block Nuxt DevTools in `npm run dev`; `server/plugins/powered-by.ts` drops the `x-powered-by` header. The CSP
-  keeps `'unsafe-inline'` for scripts and styles: Nuxt's payload, the color-mode script and Nuxt UI's styles are inline.
-  `upgrade-insecure-requests` is added only when `BETTER_AUTH_URL` is https at build time. `app/plugins/zod.client.ts`
-  sets zod to `jitless` so zod's `new Function` probe does not trip `script-src` in the browser.
-- SEO uses Nuxt's built-in head (Unhead) plus `@nuxtjs/sitemap` and `@nuxtjs/robots`: `app/app.vue` sets the site-wide
-  defaults (title template, description, `og:site_name`/`og:locale`/`og:type`, the Open Graph image
-  `public/images/meta-tags/page-view.png` (1200×630), theme colours, `google-site-verification` when set) and builds the
-  canonical link and `og:url` from the current route and `runtimeConfig.public.siteUrl`, plus default
-  `og:title`/`og:description`, the Twitter tags, the author/creator/publisher, `referrer` and `googlebot` meta, all
-  placeholders to fill per project. Its `robots` `index, follow` default has `tagPriority: 'low'` so `@nuxtjs/robots`
-  rules win. Pages call `useSeoMeta({ title, description })`; indexable pages also pass `ogTitle`, `ogDescription`,
-  `twitterTitle` and `twitterDescription`, while noindex pages keep the defaults. `@nuxtjs/robots` serves `/robots.txt`
-  and `@nuxtjs/sitemap` serves `/sitemap.xml`, both from the runtime site URL (`NUXT_PUBLIC_SITE_URL`); keep a page out
-  of search with a `robots: false` route rule in `nuxt.config.ts`, which sets `X-Robots-Tag` and drops it from the
-  sitemap, instead of per-page meta. Pages that only exist at render time (`app/error.vue`, `app/pages/[...404].vue`)
-  call `useRobotsRule(false)`.
-- Icons and PWA follow the shared web head standard (`references/web-head-standard.md` of the `consistency-audit` skill
-  in the dotfiles repo): `public/` holds `favicon.ico` (16/32/48), `favicon-32x32.png`, `apple-touch-icon.png` (180×180,
-  opaque), `icon-192x192.png` and `icon-512x512.png` at the web root, linked from `nuxt.config.ts` `app.head.link`
-  together with the manifest. `public/manifest.webmanifest` is the only manifest; its `theme_color` equals the light
-  `theme-color` in `app/app.vue`. There is no service worker: the app is installable from the manifest alone and nothing
-  is cached offline.
-- Use `<NuxtImg>`/`<NuxtPicture>` (`@nuxt/image`, served from `/_ipx` on the same origin) for images; a plain `<img>` is
-  only for local `blob:`/data-URL previews. `@nuxt/hints` adds performance and hydration hints to Nuxt DevTools in
-  development only.
+- Security headers are set in `nuxt.config.ts` under `$production.routeRules` so they do not block Nuxt DevTools in
+  development. The CSP keeps `'unsafe-inline'` because Nuxt's payload, the color-mode script and Nuxt UI's styles are
+  inline; `app/plugins/zod.client.ts` sets zod to `jitless` so its `new Function` probe does not trip `script-src`.
+- SEO defaults are placeholders in `app/app.vue`, to fill per project. Pages call `useSeoMeta({ title, description })`;
+  indexable pages also pass `ogTitle`, `ogDescription`, `twitterTitle` and `twitterDescription`. Keep a page out of
+  search with a `robots: false` route rule in `nuxt.config.ts`, not per-page meta; render-time-only pages
+  (`app/error.vue`, `app/pages/[...404].vue`) call `useRobotsRule(false)`.
+- Icons and the manifest in `public/` are linked from `nuxt.config.ts` `app.head.link`; the manifest's `theme_color`
+  equals the light `theme-color` in `app/app.vue`. There is no service worker.
+- Use `<NuxtImg>`/`<NuxtPicture>` (`@nuxt/image`) for images; a plain `<img>` is only for local `blob:`/data-URL
+  previews.
 
 ### Auth, database and environment
 
 - Rely on Nuxt auto-imports for Vue APIs, Nuxt composables, `app/composables/`, `app/utils/`, `server/utils/` and
   components; write explicit imports only for packages, types and `#shared`/`#server` modules.
-- Paths follow Nuxt 4 conventions: app code imports with `~/`, code shared by app and server lives in `shared/` and is
-  imported with `#shared/...` (`#shared/schemas/auth`, `#shared/auth/security`, `#shared/config/uploads`), and
-  Nitro-only files (`server/api/`, `server/plugins/`, `server/utils/`) import with `#server/...`. Files the CLIs load
-  (`server/auth/`, `server/db/`, `server/env.ts`) use relative imports so drizzle-kit and the Better Auth CLI resolve
-  them.
-- Auth: Better Auth is configured in `server/auth/auth.ts` and served by `server/api/auth/[...all].ts`; the Vue client
-  is `app/utils/auth-client.ts` (`better-auth/vue`), and components read the session with
-  `authClient.useSession(useFetch)` so it renders on the server. Self-serve sign-up is enabled and requires email
-  verification; auth emails (verification, welcome, password reset, security notifications) live in
-  `server/auth/emails/` and render through `email-layout.ts`. The `auth` route middleware (`app/middleware/auth.ts`)
-  only guards `/account` with an optimistic cookie check during SSR, so the auth pages (`/sign-in`, `/sign-up`,
-  `/verify-email`, `/forgot-password`, `/reset-password`, `/two-factor`) stay public; protected data comes from server
-  routes that call the auto-imported `requireSession()` (`server/utils/session.ts`), such as
-  `server/api/account.get.ts`.
-- Auth hardening lives in `shared/auth/security.ts`: 12-character minimum password, sessions revoked on password reset,
-  database-backed rate limits (`rate_limit` table), the app origin plus `BETTER_AUTH_TRUSTED_ORIGINS` as trusted
-  origins, `Secure` cookies when `BETTER_AUTH_URL` is https. Security notifications are sent by the `hooks.after`
-  middleware in `server/auth/hooks/security-notifications.ts`; a failed send is logged and never fails the action.
-- Pages own their content: a page's form and logic live in the page file itself, and `app/components/` holds only pieces
-  reused across pages or that split a large page into sections. The auth pages live in the `app/pages/(auth)/` route
-  group (the folder name is not part of the URL) and use `UAuthForm` inside the shared `AuthCard`; `/account` composes
-  its sections from `app/components/auth/` (auto-imported as `Auth*`) with `UForm` + `UFormField`. All forms validate
-  with the zod schemas in `shared/schemas/auth.ts`; `useToast()` for feedback, `UPinInput` for codes,
-  `UInput type="password"` for passwords and `qrcode.vue` for the TOTP QR code.
-- `npm run db:seed` runs the `db:seed` Nitro task (`server/tasks/db/seed.ts`, `nitro.experimental.tasks`) and creates
-  the verified fixture account `user@mail.com` (password hardcoded in `server/db/seeders/user.ts`). `nuxt task run`
-  talks to the running dev server's `/_nitro/tasks` route, which exists only in development, so the owner starts
-  `npm run dev` first. The task refuses to run unless `NODE_ENV` is `development` or `test` and `DATABASE_URL` points at
-  `vue_template_local_db` on `localhost`/`127.0.0.1:5436`, and it never modifies an existing account. These checks catch
-  accidents only; keep seeding out of production deploy paths.
-- Environment variables are declared as zod schemas in `server/env.ts` and validated by `createEnv` from
-  `@t3-oss/env-nuxt` (`emptyStringAsUndefined`); `server/plugins/environment.ts` validates them when the server starts.
-  `NUXT_PUBLIC_SITE_URL` and `NUXT_PUBLIC_GOOGLE_SITE_VERIFICATION` override `runtimeConfig.public.siteUrl` /
-  `googleSiteVerification` when the server starts; `nuxt.config.ts` holds only defaults and never reads `process.env`
-  for runtime values, because the config is frozen at build time. Add new variables to the schema and to `.env.example`.
+- App code imports with `~/`, code shared by app and server lives in `shared/` (`#shared/...`), and Nitro-only files
+  import with `#server/...`. Files the CLIs load (`server/auth/`, `server/db/`, `server/env.ts`) use relative imports so
+  drizzle-kit and the Better Auth CLI resolve them.
+- Auth: Better Auth is configured in `server/auth/auth.ts`; the Vue client is `app/utils/auth-client.ts`, and components
+  read the session with `authClient.useSession(useFetch)` so it renders on the server. The `auth` route middleware is
+  only an optimistic cookie check for `/account`; protected data comes from server routes that call `requireSession()`
+  (`server/utils/session.ts`).
+- Auth hardening values live in `shared/auth/security.ts`. A failed security-notification email is logged and never
+  fails the action (`server/auth/hooks/security-notifications.ts`).
+- Pages own their content: a page's form and logic live in the page file, and `app/components/` holds only pieces reused
+  across pages or that split a large page into sections. All forms validate with the zod schemas in
+  `shared/schemas/auth.ts`.
+- `npm run db:seed` runs the `db:seed` Nitro task through the dev server's `/_nitro/tasks` route, so the owner starts
+  `npm run dev` first. Its guards in `server/tasks/db/seed.ts` catch accidents only; keep seeding out of production
+  deploy paths.
+- Environment variables are declared as zod schemas in `server/env.ts` and validated when the server starts.
+  `nuxt.config.ts` holds only defaults and never reads `process.env` for runtime values, because the config is frozen at
+  build time; `NUXT_PUBLIC_*` variables override `runtimeConfig.public` at startup. Add new variables to the schema and
+  to `.env.example`.
 
 ### Structure and naming
 
-- Application sources live in `app/`, as in the official Nuxt 4 starter; `server/` and `public/` stay at the root.
-- File-based routing in `app/pages/` (`[...404].vue` renders the not-found page with a 404 status; `app/error.vue`
-  handles thrown errors); layouts in `app/layouts/`, composables in `app/composables/`, helpers in `app/utils/` (kept
-  flat: Nuxt auto-imports only top-level files there), server routes in `server/api/` and `server/routes/`, the database
-  in `server/db/`.
+- `[...404].vue` renders the not-found page with a 404 status; `app/error.vue` handles thrown errors. Keep `app/utils/`
+  flat: Nuxt auto-imports only top-level files there.
 - `<script setup lang="ts">` for every component — no Options API.
 - Components are PascalCase files (`PageHeader.vue`) and auto-imported from `app/components/`; pages are kebab-case
-  (`user-profile.vue`). Nuxt UI components (`UButton`, `UForm`, …) are auto-imported by the module.
-- Composables export a `use`-prefixed function (`useSignOut`) from a kebab-case file (`use-sign-out.ts`) and are
-  auto-imported from `app/composables/`.
+  (`user-profile.vue`).
+- Composables export a `use`-prefixed function (`useSignOut`) from a kebab-case file (`use-sign-out.ts`).
 
 ### Styling
 
 - Prefer Nuxt UI components and their props (`color`, `variant`, `size`, `ui`) over hand-built markup; use Tailwind
   utility classes for layout.
-- The only global stylesheet is `app/assets/css/main.css`: Tailwind, Nuxt UI, the self-hosted Geist font and the
-  `--ui-primary` override for light and `.dark`.
+- `app/assets/css/main.css` is the only global stylesheet.
 - Use Nuxt UI's semantic utilities (`text-muted`, `text-highlighted`, `bg-elevated`, `border-default`, …) — never
   hard-code colours.
 - Mobile-first: base classes for mobile, breakpoint prefixes (`sm:`, `md:`) for larger screens.
 
 ## Working rules
 
-- Run commands from the repository root with the Node version in `.nvmrc`; use the npm scripts in `package.json`.
+- Run commands from the repository root; use the npm scripts in `package.json`.
 - Git hooks come from `lefthook.yml` (`npm run install:lefthook` once per clone); never bypass them with `--no-verify`.
   When a hook fails, fix the staged files or report the failure — do not work around the hook.
 - Never commit, amend or push unless asked. Stage only files that belong to the task; leave unrelated dirty files,
   owner-local files and untracked scratch exactly as found — never restore, reset or stash them to make a task easier.
-- Generated output (`.nuxt/`, `.output/`, `dist/`) is never committed.
 - Never start, stop or restart the owner's dev servers: the compose stack (`docker compose up -d --wait` /
   `docker compose down`, Postgres and Mailpit) and Nuxt (`npm run dev`, `npm run preview`). Reuse a healthy one; if it
   is missing, report the exact command for the owner and stop that step. Only terminate processes started by the current
@@ -177,25 +133,3 @@ and `build`.
 | CSS, Markdown, JSON, YAML       | `npm run format:ox:check`              | `npm run lint`                                                   |
 | static output (`nuxt generate`) | `npm run build`                        | `npm run generate`                                               |
 | cross-cutting / tooling         | `npm run lint && npm run typecheck`    | `npm run verify:static` (typecheck, lint, knip); `npm run build` |
-
-## AI workflow layout
-
-| Path                                          | Holds                                                                                                                          |
-| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| `.ai/skills/<name>/`                          | Project skills — the only copy of each; generated files go to the skill's own `output/`, ignored by a skill-local `.gitignore` |
-| `.agents/skills/`                             | Third-party skills managed by `npx skills` (`skills-lock.json`), plus a symlink per project skill so Codex discovers it        |
-| `.claude/skills/`                             | Symlinks only — Claude Code's discovery path into both of the above                                                            |
-| `.claude/settings.json`, `.codex/config.toml` | Per-agent settings only; keep their environment policy in sync                                                                 |
-| `.ai/audits/<YYYY-MM-DD>-<slug>/README.md`    | An audit lives here only while it holds unresolved work                                                                        |
-
-## Project skills
-
-All Vue Template-owned skills live canonically under `.ai/skills/`.
-
-Agent-specific skill directories such as `.claude/skills/` and `.agents/skills/` must contain only adapters or symlinks
-to those project skills when required for tool discovery (`ln -s ../../.ai/skills/<name>` in both).
-
-Never maintain duplicate copies of a Vue Template-owned `SKILL.md`.
-
-When an audit is done, move its durable conclusions into `AGENTS.md` or `README.md`, carry any open item to a tracked
-place, and delete the folder — git history is the archive. Audits carry no screenshots or raw dumps.
