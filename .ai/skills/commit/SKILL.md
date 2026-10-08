@@ -11,7 +11,7 @@ description: Create a conventional commit for staged or unstaged changes. Inspec
 2. Run `git log --oneline -5` to match recent commit style
 3. Draft a commit message:
    - `type(scope): subject` — imperative, lowercase, ≤ 70 chars
-   - Body: bullet points explaining WHY, wrapped at 80 chars
+   - Body: at most one short line saying why, only when it is not obvious; no bullets
    - Add `BREAKING CHANGE:` footer only if applicable
 4. Stage relevant files with `git add <specific-files>` (never `git add .`)
 5. Commit via heredoc to preserve formatting
