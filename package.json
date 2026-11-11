@@ -40,6 +40,7 @@
         "lint": "npm run lint:ox && npm run format:ox:check",
         "lint:ox": "oxlint .",
         "lint:ox:fix": "oxlint . --fix",
+        "postinstall": "nuxt prepare",
         "prepare:nuxt": "nuxt prepare",
         "preview": "nuxt preview",
         "start": "node --env-file-if-exists=.env .output/server/index.mjs",
