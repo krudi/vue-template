@@ -42,7 +42,7 @@ function assertSeedableDatabase(): void {
 export default defineTask({
     meta: {
         name: 'db:seed',
-        description: 'Create the verified local fixture account',
+        description: 'Create the verified local fixture accounts and organizations',
     },
     async run() {
         assertSeedableEnvironment();

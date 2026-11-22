@@ -1,5 +1,6 @@
 import { betterAuth } from 'better-auth';
 import { drizzleAdapter } from 'better-auth/adapters/drizzle';
+import { admin, organization } from 'better-auth/plugins';
 
 import { MIN_PASSWORD_LENGTH } from '#shared/auth/security';
 
@@ -23,4 +24,5 @@ export const seederAuth = betterAuth({
             },
         },
     },
+    plugins: [admin(), organization()],
 });
