@@ -1,6 +1,6 @@
 import { betterAuth } from 'better-auth';
 import { drizzleAdapter } from 'better-auth/adapters/drizzle';
-import { twoFactor } from 'better-auth/plugins';
+import { admin, organization, twoFactor } from 'better-auth/plugins';
 
 import {
     MIN_PASSWORD_LENGTH,
@@ -80,5 +80,5 @@ export const auth = betterAuth({
     hooks: {
         after: securityNotificationsHook,
     },
-    plugins: [twoFactor()],
+    plugins: [twoFactor(), admin(), organization()],
 });

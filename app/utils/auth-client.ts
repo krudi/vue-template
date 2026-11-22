@@ -1,4 +1,4 @@
-import { twoFactorClient } from 'better-auth/client/plugins';
+import { adminClient, organizationClient, twoFactorClient } from 'better-auth/client/plugins';
 import { createAuthClient } from 'better-auth/vue';
 
 export const authClient = createAuthClient({
@@ -8,5 +8,7 @@ export const authClient = createAuthClient({
                 void navigateTo('/two-factor');
             },
         }),
+        adminClient(),
+        organizationClient(),
     ],
 });
