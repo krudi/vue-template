@@ -8,12 +8,12 @@ practice.
 
 ## Where knowledge lives
 
-| Question                                   | Source                                                 |
-| ------------------------------------------ | ------------------------------------------------------ |
-| Setup, local services, npm scripts         | `README.md`                                            |
-| Conventions, commands, verification        | this file                                              |
-| Repeatable workflows (commit, PR, test, …) | `.ai/skills/<name>/SKILL.md` — pick by its description |
-| Third-party skills                         | `skills-lock.json` (`npx skills`)                      |
+| Question                            | Source                                                 |
+| ----------------------------------- | ------------------------------------------------------ |
+| Setup, local services, npm scripts  | `README.md`                                            |
+| Conventions, commands, verification | this file                                              |
+| Repeatable workflows (commit, PR)   | `.ai/skills/<name>/SKILL.md` — pick by its description |
+| Third-party skills                  | `skills-lock.json` (`npx skills`)                      |
 
 Do not create competing documentation; update the owner instead.
 
