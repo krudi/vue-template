@@ -3,7 +3,7 @@
     "name": "vue-template",
     "version": "0.1.0",
     "private": true,
-    "description": "A template with Nuxt 4 built on Vue 3 with focus on performance and best practices.",
+    "description": "A template with Nuxt 4 built on Vue 3, Tailwind CSS v4 and Nuxt UI with focus on performance and best practices.",
     "keywords": [
         "template"
     ],

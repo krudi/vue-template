@@ -1,8 +1,6 @@
 # vue-template
 
-A template with [Nuxt 4](https://github.com/nuxt/nuxt) built on [Vue 3](https://github.com/vuejs/core),
-[Tailwind CSS v4](https://tailwindcss.com) and [Nuxt UI](https://ui.nuxt.com) with focus on performance and best
-practices.
+A template with Nuxt 4 built on Vue 3, Tailwind CSS v4 and Nuxt UI with focus on performance and best practices.
 
 ## Quick start
 
@@ -30,8 +28,7 @@ emails), a Mailpit SMTP server. Both are defined in `compose.yaml`.
 - `npm run auth:generate`: regenerates the Drizzle auth schema from the Better Auth config
 - `docker compose down`: stops the local containers
 
-Postgres listens on `127.0.0.1:5436` and Mailpit SMTP on `127.0.0.1:1027`. Mailpit's web UI is available at
-<http://localhost:8026>; override the ports with `POSTGRES_PORT`, `MAILPIT_SMTP_PORT` and `MAILPIT_WEB_PORT` in `.env`.
+A template with Nuxt 4 built on Vue 3, Tailwind CSS v4 and Nuxt UI with focus on performance and best practices.
 
 ## Commands for linting/fixing files
 
